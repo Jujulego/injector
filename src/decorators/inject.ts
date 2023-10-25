@@ -1,4 +1,5 @@
 import { InjectableType } from '../defs/index.js';
+import { inject$ } from '../inject.js';
 
 // Types
 export interface InjectOpts {
@@ -16,17 +17,15 @@ export type InjectDecorator<I> = InjectFieldDecorator<I> | InjectAccessorDecorat
 export function Inject<I>(cls: InjectableType<I>, opts?: { lazy?: false }): InjectFieldDecorator<I>;
 export function Inject<I>(cls: InjectableType<I>, opts: { lazy: true }): InjectAccessorDecorator<I>;
 
-export function Inject<I>(cls: InjectableType<I>, opts: InjectOpts = {}): InjectDecorator<I> {
+export function Inject<I>(type: InjectableType<I>, opts: InjectOpts = {}): InjectDecorator<I> {
   return <InjectDecorator<I>>((target: undefined | ClassAccessorDecoratorTarget<unknown, I>, ctx: ClassFieldDecoratorContext<unknown, I> | ClassAccessorDecoratorContext<unknown, I>) => {
-    const init: InjectInitializer<I> = () => new cls();
-
     if (ctx.kind === 'accessor' && opts.lazy) {
       return {
         get() {
           let instance = target!.get.call(this);
 
           if (instance === undefined) {
-            instance = init();
+            instance = inject$(type);
             target!.set.call(this, instance);
           }
 
@@ -38,6 +37,6 @@ export function Inject<I>(cls: InjectableType<I>, opts: InjectOpts = {}): Inject
       };
     }
 
-    return init;
+    return () => inject$(type);
   });
 }
