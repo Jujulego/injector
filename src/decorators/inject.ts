@@ -13,9 +13,39 @@ export type InjectAccessorDecorator<I> = <T>(target: ClassAccessorDecoratorTarge
 
 export type InjectDecorator<I> = InjectFieldDecorator<I> | InjectAccessorDecorator<I>;
 
-// Decorator
-export function Inject<I>(cls: InjectableType<I>, opts?: { lazy?: false }): InjectFieldDecorator<I>;
-export function Inject<I>(cls: InjectableType<I>, opts: { lazy: true }): InjectAccessorDecorator<I>;
+/**
+ * Inject service instance into the decorated field, using `inject$`.
+ *
+ * ```typescript
+ * class ToInject {}
+ *
+ * class Example {
+ *   @Inject(ToInject)
+ *   readonly toInject: ToInject;
+ * }
+ * ```
+ *
+ * @param type Service to inject
+ * @param opts
+ */
+export function Inject<I>(type: InjectableType<I>, opts?: { lazy?: false }): InjectFieldDecorator<I>;
+
+/**
+ * Lazily inject service instance into the decorated accessor, using `inject$`.
+ *
+ * ```typescript
+ * class ToInject {}
+ *
+ * class Example {
+ *   @Inject(ToInject, { lazy: true })
+ *   accessor toInject: ToInject;
+ * }
+ * ```
+ *
+ * @param type Service to inject
+ * @param opts
+ */
+export function Inject<I>(type: InjectableType<I>, opts: { lazy: true }): InjectAccessorDecorator<I>;
 
 export function Inject<I>(type: InjectableType<I>, opts: InjectOpts = {}): InjectDecorator<I> {
   return <InjectDecorator<I>>((target: undefined | ClassAccessorDecoratorTarget<unknown, I>, ctx: ClassFieldDecoratorContext<unknown, I> | ClassAccessorDecoratorContext<unknown, I>) => {
