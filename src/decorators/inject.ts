@@ -1,28 +1,43 @@
 import { InjectableType } from '../defs/index.js';
 
 // Types
+export interface InjectOpts {
+  lazy?: boolean;
+}
+
 export type InjectInitializer<I> = () => I;
 
-export type InjectTarget<T, I> = undefined | ClassAccessorDecoratorTarget<T, I>;
-export type InjectContext<T, I> = ClassFieldDecoratorContext<T, I> | ClassAccessorDecoratorContext<T, I>;
-export type InjectResult<T, I> = InjectInitializer<I> & ClassAccessorDecoratorResult<T, I>;
+export type InjectFieldDecorator<I> = <T>(target: undefined, ctx: ClassFieldDecoratorContext<T, I>) => InjectInitializer<I>;
+export type InjectAccessorDecorator<I> = <T>(target: ClassAccessorDecoratorTarget<T, I>, ctx: ClassAccessorDecoratorContext<T, I>) => ClassAccessorDecoratorResult<T, I>;
 
-export type InjectDecorator<I> = <T>(target: InjectTarget<T, I>, ctx: InjectContext<T, I>) => InjectResult<T, I>;
+export type InjectDecorator<I> = InjectFieldDecorator<I> | InjectAccessorDecorator<I>;
 
 // Decorator
-export function Inject<I>(cls: InjectableType<I>): InjectDecorator<I> {
-  return (_target: InjectTarget<unknown, I>, ctx: InjectContext<unknown, I>): InjectResult<unknown, I> => {
+export function Inject<I>(cls: InjectableType<I>, opts?: { lazy?: false }): InjectFieldDecorator<I>;
+export function Inject<I>(cls: InjectableType<I>, opts: { lazy: true }): InjectAccessorDecorator<I>;
+
+export function Inject<I>(cls: InjectableType<I>, opts: InjectOpts = {}): InjectDecorator<I> {
+  return <InjectDecorator<I>>((target: undefined | ClassAccessorDecoratorTarget<unknown, I>, ctx: ClassFieldDecoratorContext<unknown, I> | ClassAccessorDecoratorContext<unknown, I>) => {
     const init: InjectInitializer<I> = () => new cls();
 
-    if (ctx.kind === 'accessor') {
-      return ({
-        init,
-        set() {
-          throw new Error(`Cannot set injected accessor ${String(ctx.name)}`);
+    if (ctx.kind === 'accessor' && opts.lazy) {
+      return {
+        get() {
+          let instance = target!.get.call(this);
+
+          if (instance === undefined) {
+            instance = init();
+            target!.set.call(this, instance);
+          }
+
+          return instance;
         },
-      }) as unknown as InjectResult<unknown, I>;
+        set() {
+          throw new Error(`Cannot set lazy injected accessor ${String(ctx.name)}`);
+        },
+      };
     }
 
     return init;
-  };
+  });
 }
