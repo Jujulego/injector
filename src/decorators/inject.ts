@@ -1,4 +1,5 @@
 import { InjectableType } from '../defs/index.js';
+import { inject$ } from '../inject.js';
 
 // Types
 export interface InjectOpts {
@@ -12,21 +13,49 @@ export type InjectAccessorDecorator<I> = <T>(target: ClassAccessorDecoratorTarge
 
 export type InjectDecorator<I> = InjectFieldDecorator<I> | InjectAccessorDecorator<I>;
 
-// Decorator
-export function Inject<I>(cls: InjectableType<I>, opts?: { lazy?: false }): InjectFieldDecorator<I>;
-export function Inject<I>(cls: InjectableType<I>, opts: { lazy: true }): InjectAccessorDecorator<I>;
+/**
+ * Inject service instance into the decorated field, using `inject$`.
+ *
+ * ```typescript
+ * class ToInject {}
+ *
+ * class Example {
+ *   @Inject(ToInject)
+ *   readonly toInject: ToInject;
+ * }
+ * ```
+ *
+ * @param type Service to inject
+ * @param opts
+ */
+export function Inject<I>(type: InjectableType<I>, opts?: { lazy?: false }): InjectFieldDecorator<I>;
 
-export function Inject<I>(cls: InjectableType<I>, opts: InjectOpts = {}): InjectDecorator<I> {
+/**
+ * Lazily inject service instance into the decorated accessor, using `inject$`.
+ *
+ * ```typescript
+ * class ToInject {}
+ *
+ * class Example {
+ *   @Inject(ToInject, { lazy: true })
+ *   accessor toInject: ToInject;
+ * }
+ * ```
+ *
+ * @param type Service to inject
+ * @param opts
+ */
+export function Inject<I>(type: InjectableType<I>, opts: { lazy: true }): InjectAccessorDecorator<I>;
+
+export function Inject<I>(type: InjectableType<I>, opts: InjectOpts = {}): InjectDecorator<I> {
   return <InjectDecorator<I>>((target: undefined | ClassAccessorDecoratorTarget<unknown, I>, ctx: ClassFieldDecoratorContext<unknown, I> | ClassAccessorDecoratorContext<unknown, I>) => {
-    const init: InjectInitializer<I> = () => new cls();
-
     if (ctx.kind === 'accessor' && opts.lazy) {
       return {
         get() {
           let instance = target!.get.call(this);
 
           if (instance === undefined) {
-            instance = init();
+            instance = inject$(type);
             target!.set.call(this, instance);
           }
 
@@ -38,6 +67,6 @@ export function Inject<I>(cls: InjectableType<I>, opts: InjectOpts = {}): Inject
       };
     }
 
-    return init;
+    return () => inject$(type);
   });
 }
