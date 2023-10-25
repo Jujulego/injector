@@ -378,6 +378,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jujulego/aegis@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@jujulego/aegis@npm:2.0.0"
+  dependencies:
+    "@jujulego/event-tree": "npm:^4.1.1"
+    "@jujulego/utils": "npm:^2.0.0"
+  dependenciesMeta:
+    vitest@0.34.5:
+      unplugged: true
+  checksum: 0b0b6e62e31b4b802d039025d5eb40dfd7e434c3ab2fd9b63a6f3747b89d83c3a11b6d57465869753fe44d770f814fa02dd1b146643b532497c11ac2fdbf9d67
+  languageName: node
+  linkType: hard
+
 "@jujulego/event-tree@npm:^4.1.0, @jujulego/event-tree@npm:^4.1.1, @jujulego/event-tree@npm:^4.2.0":
   version: 4.2.0
   resolution: "@jujulego/event-tree@npm:4.2.0"
@@ -392,6 +405,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@jujulego/injector@workspace:."
   dependencies:
+    "@jujulego/aegis": "npm:^2.0.0"
     "@jujulego/jill": "npm:2.3.3"
     "@jujulego/vite-plugin-swc": "npm:1.1.0"
     "@microsoft/eslint-formatter-sarif": "npm:3.0.0"

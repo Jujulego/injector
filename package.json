@@ -31,6 +31,9 @@
     "test": "vitest run",
     "test:types": "vitest typecheck"
   },
+  "dependencies": {
+    "@jujulego/aegis": "^2.0.0"
+  },
   "devDependencies": {
     "@jujulego/jill": "2.3.3",
     "@jujulego/vite-plugin-swc": "1.1.0",
