@@ -1,8 +1,11 @@
-import { InjectableType } from './defs/index.js';
+import { InjectableType, STORE } from './defs/index.js';
+import { getMetadata } from './metadata.js';
+import { SyncRef } from '@jujulego/aegis';
 
 /**
- * Instance given service
+ * Return an instance of given service
  */
 export function inject$<I>(type: InjectableType<I>): I {
-  return new type();
+  const store = getMetadata<SyncRef<I>>(type, STORE);
+  return store ? store.read() : new type();
 }

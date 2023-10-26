@@ -31,6 +31,12 @@
     "test": "vitest run",
     "test:types": "vitest typecheck"
   },
+  "peerDependencies": {
+    "reflect-metadata": "^0.1.13"
+  },
+  "dependencies": {
+    "@jujulego/aegis": "^2.0.0"
+  },
   "devDependencies": {
     "@jujulego/jill": "2.3.3",
     "@jujulego/vite-plugin-swc": "1.1.0",
@@ -43,6 +49,7 @@
     "@vitest/coverage-v8": "0.34.6",
     "eslint": "8.52.0",
     "eslint-plugin-vitest": "0.3.8",
+    "reflect-metadata": "0.1.13",
     "shx": "0.3.4",
     "typescript": "5.2.2",
     "vite": "5.0.0-beta.12",
