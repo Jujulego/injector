@@ -6,7 +6,8 @@ export function defineMetadata(target: AnyType, key: symbol, value: unknown) {
     const metadata = target[Symbol.metadata];
 
     if (metadata) {
-      return metadata[key] = value;
+      metadata[key] = value;
+      return value;
     }
   }
 
