@@ -18,9 +18,16 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    "types": "./dist/index.d.ts",
-    "import": "./dist/index.js",
-    "default": "./dist/index.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./tests": {
+      "types": "./dist/tests/index.d.ts",
+      "import": "./dist/tests/index.js",
+      "default": "./dist/tests/index.js"
+    }
   },
   "scripts": {
     "lint": "eslint .",

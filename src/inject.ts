@@ -1,6 +1,7 @@
+import { SyncRef } from '@jujulego/aegis';
+
 import { InjectableType, STORE } from './defs/index.js';
 import { getMetadata } from './metadata.js';
-import { SyncRef } from '@jujulego/aegis';
 
 /**
  * Return an instance of given service
