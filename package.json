@@ -42,7 +42,8 @@
     "reflect-metadata": "^0.1.13"
   },
   "dependencies": {
-    "@jujulego/aegis": "^2.0.0"
+    "@jujulego/aegis": "^2.0.0",
+    "@jujulego/utils": "^2.0.2"
   },
   "devDependencies": {
     "@jujulego/jill": "2.3.3",

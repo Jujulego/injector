@@ -407,6 +407,7 @@ __metadata:
   dependencies:
     "@jujulego/aegis": "npm:^2.0.0"
     "@jujulego/jill": "npm:2.3.3"
+    "@jujulego/utils": "npm:^2.0.2"
     "@jujulego/vite-plugin-swc": "npm:1.1.0"
     "@microsoft/eslint-formatter-sarif": "npm:3.0.0"
     "@swc/cli": "npm:0.1.62"
@@ -494,7 +495,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jujulego/utils@npm:^2.0.0, @jujulego/utils@npm:^2.0.1":
+"@jujulego/utils@npm:^2.0.0, @jujulego/utils@npm:^2.0.1, @jujulego/utils@npm:^2.0.2":
   version: 2.0.2
   resolution: "@jujulego/utils@npm:2.0.2"
   dependencies:
