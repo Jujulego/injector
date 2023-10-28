@@ -1,5 +1,5 @@
 import { Injectable } from './injectable.js';
-import { singleton$ } from '../stores/index.js';
+import { singleton$ } from '../modifiers/index.js';
 
 /**
  * Marks a class as injectable, with a singleton$ store.
@@ -8,5 +8,5 @@ import { singleton$ } from '../stores/index.js';
  * @link singleton$
  */
 export function Service() {
-  return Injectable({ store: singleton$ });
+  return Injectable({ modifiers: [singleton$()] });
 }

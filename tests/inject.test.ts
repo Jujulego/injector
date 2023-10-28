@@ -1,6 +1,6 @@
 import { inject$ } from '@/src/inject.js';
-import { Injectable } from '@/src/decorators/index.js';
-import { singleton$ } from '@/src/stores/index.js';
+import { Injectable } from '@/src/decorators/injectable.js';
+import { singleton$ } from '@/src/modifiers/singleton.js';
 
 // Tests
 describe('inject$', () => {
@@ -11,7 +11,7 @@ describe('inject$', () => {
   });
 
   it('should always return the same instance of service', () => {
-    @Injectable({ store: singleton$ })
+    @Injectable({ modifiers: [singleton$()] })
     class TestService {}
 
     expect(inject$(TestService)).toBeInstanceOf(TestService);

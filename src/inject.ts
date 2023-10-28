@@ -13,7 +13,8 @@ export function inject$<I>(type: InjectableType<I> | Token<I>): Awaitable<I>;
 
 export function inject$<I>(token: InjectableType<I> | Token<I>): Awaitable<I> {
   if (typeof token === 'function') {
-    token = getMetadata<SyncToken<I>>(token, TOKEN) ?? token$(() => new (token as InjectableType<I>)());
+    const type = token;
+    token = getMetadata<SyncToken<I>>(token, TOKEN) ?? token$(() => new type());
   }
 
   return token.read();
