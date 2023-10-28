@@ -379,15 +379,15 @@ __metadata:
   linkType: hard
 
 "@jujulego/aegis@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@jujulego/aegis@npm:2.0.0"
+  version: 2.0.1
+  resolution: "@jujulego/aegis@npm:2.0.1"
   dependencies:
     "@jujulego/event-tree": "npm:^4.1.1"
     "@jujulego/utils": "npm:^2.0.0"
   dependenciesMeta:
     vitest@0.34.5:
       unplugged: true
-  checksum: 0b0b6e62e31b4b802d039025d5eb40dfd7e434c3ab2fd9b63a6f3747b89d83c3a11b6d57465869753fe44d770f814fa02dd1b146643b532497c11ac2fdbf9d67
+  checksum: ef00529c967da7f1f196f21e2de5423fb0022a5f09dc84d2854a5bc5afde5fe6dda5255a22f68a8ad6fcef19367cb9b2569f33c8103aae34d63d85004f41da00
   languageName: node
   linkType: hard
 
