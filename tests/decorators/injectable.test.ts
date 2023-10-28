@@ -16,7 +16,7 @@ beforeEach(() => {
 // Tests
 describe('@Injectable', () => {
   it('should add given store to class metadata', () => {
-    @Injectable({ store: test$ })
+    @Injectable()
     class TestService {}
 
     expect(getMetadata(TestService, STORE)).toBe(store);
