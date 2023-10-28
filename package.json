@@ -42,7 +42,7 @@
     "reflect-metadata": "^0.1.13"
   },
   "dependencies": {
-    "@jujulego/aegis": "^2.0.0",
+    "@jujulego/aegis": "^2.0.1",
     "@jujulego/utils": "^2.0.2"
   },
   "devDependencies": {

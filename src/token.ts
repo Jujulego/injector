@@ -1,17 +1,21 @@
 import { AsyncToken, SyncToken, Token } from './defs/index.js';
-import { pipe$, ref$ } from '@jujulego/aegis';
+import { pipe$, PipeOperator, ref$ } from '@jujulego/aegis';
 import { Awaitable } from '@jujulego/utils';
 
-export function token$<I>(factory: () => I): SyncToken<I>;
-export function token$<I>(factory: () => PromiseLike<I>): AsyncToken<I>;
-export function token$<I>(factory: () => Awaitable<I>): Token<I>;
+export interface TokenOpts<I> {
+  modifiers?: PipeOperator<Token<I>, Token<I>>[];
+}
 
-export function token$<I>(factory: () => Awaitable<I>): Token<I> {
-  return pipe$(
-    ref$<I>(factory),
-    (ref) => {
-      let cache: Awaitable<I> | null = null;
-      return ref$<I>(() => cache ??= ref.read());
-    }
-  );
+export function token$<I>(factory: () => I, opts?: TokenOpts<I>): SyncToken<I>;
+export function token$<I>(factory: () => PromiseLike<I>, opts?: TokenOpts<I>): AsyncToken<I>;
+export function token$<I>(factory: () => Awaitable<I>, opts?: TokenOpts<I>): Token<I>;
+
+export function token$<I>(factory: () => Awaitable<I>, opts: TokenOpts<I> = {}): Token<I> {
+  let token = ref$<I>(factory);
+
+  if (opts.modifiers) {
+    token = pipe$(token, ...opts.modifiers);
+  }
+
+  return token;
 }

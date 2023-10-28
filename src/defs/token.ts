@@ -1,5 +1,5 @@
 import { AsyncRef, Ref, SyncRef } from '@jujulego/aegis';
 
-export type Token<I> = Ref<I>;
-export type SyncToken<I> = SyncRef<I>;
-export type AsyncToken<I> = AsyncRef<I>;
+export type Token<I = unknown> = Ref<I>;
+export type SyncToken<I = unknown> = SyncRef<I>;
+export type AsyncToken<I = unknown> = AsyncRef<I>;
