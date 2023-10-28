@@ -1,2 +1,2 @@
 // Symbols
-export const STORE = Symbol('jujulego/injector:store');
+export const TOKEN = Symbol('jujulego/injector:token');

@@ -1,27 +1,30 @@
-import { const$, SyncRef } from '@jujulego/aegis';
+import { const$ } from '@jujulego/aegis';
 import { beforeEach, vi } from 'vitest';
 
 import { Injectable } from '@/src/decorators/injectable.js';
-import { STORE } from '@/src/defs/symbols.js';
+import { TOKEN } from '@/src/defs/symbols.js';
 import { getMetadata } from '@/src/metadata.js';
+import { token$ } from '@/src/token.js';
 
 // Setup
 const store = const$(null);
-const test$ = vi.fn<[() => unknown], SyncRef>(() => store);
+
+vi.mock('@/src/token.js');
 
 beforeEach(() => {
-  test$.mockClear();
+  vi.mocked(token$).mockClear();
+  vi.mocked(token$).mockReturnValue(store);
 });
 
 // Tests
 describe('@Injectable', () => {
   it('should add given store to class metadata', () => {
-    @Injectable({ store: test$ })
+    @Injectable()
     class TestService {}
 
-    expect(getMetadata(TestService, STORE)).toBe(store);
+    expect(getMetadata(TestService, TOKEN)).toBe(store);
 
-    expect(test$).toHaveBeenCalledOnce();
-    expect(test$.mock.calls[0]![0]()).toBeInstanceOf(TestService);
+    expect(token$).toHaveBeenCalledOnce();
+    expect(vi.mocked(token$).mock.calls[0]![0]()).toBeInstanceOf(TestService);
   });
 });

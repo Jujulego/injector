@@ -1,4 +1,4 @@
-import { InjectableType } from '../defs/index.js';
+import { InjectableType, SyncToken } from '../defs/index.js';
 import { inject$ } from '../inject.js';
 
 // Types
@@ -28,7 +28,7 @@ export type InjectDecorator<I> = InjectFieldDecorator<I> | InjectAccessorDecorat
  * @param type Service to inject
  * @param opts
  */
-export function Inject<I>(type: InjectableType<I>, opts?: { lazy?: false }): InjectFieldDecorator<I>;
+export function Inject<I>(type: InjectableType<I> | SyncToken<I>, opts?: { lazy?: false }): InjectFieldDecorator<I>;
 
 /**
  * Lazily inject service instance into the decorated accessor, using `inject$`.
@@ -45,9 +45,9 @@ export function Inject<I>(type: InjectableType<I>, opts?: { lazy?: false }): Inj
  * @param type Service to inject
  * @param opts
  */
-export function Inject<I>(type: InjectableType<I>, opts: { lazy: true }): InjectAccessorDecorator<I>;
+export function Inject<I>(type: InjectableType<I> | SyncToken<I>, opts: { lazy: true }): InjectAccessorDecorator<I>;
 
-export function Inject<I>(type: InjectableType<I>, opts: InjectOpts = {}): InjectDecorator<I> {
+export function Inject<I>(type: InjectableType<I> | SyncToken<I>, opts: InjectOpts = {}): InjectDecorator<I> {
   return <InjectDecorator<I>>((target: undefined | ClassAccessorDecoratorTarget<unknown, I>, ctx: ClassFieldDecoratorContext<unknown, I> | ClassAccessorDecoratorContext<unknown, I>) => {
     if (ctx.kind === 'accessor' && opts.lazy) {
       return {
