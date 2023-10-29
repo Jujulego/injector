@@ -7,8 +7,8 @@ export interface TokenOpts<T extends Token> {
   modifiers?: PipeOperator<T, T>[];
 }
 
-export function token$<I>(factory: () => I, opts?: TokenOpts<SyncToken<I>>): SyncToken<I>;
 export function token$<I>(factory: () => PromiseLike<I>, opts?: TokenOpts<AsyncToken<I>>): AsyncToken<I>;
+export function token$<I>(factory: () => I, opts?: TokenOpts<SyncToken<I>>): SyncToken<I>;
 export function token$<I>(factory: () => Awaitable<I>, opts?: TokenOpts<Token<I>>): Token<I>;
 
 export function token$<I>(factory: () => Awaitable<I>, opts: TokenOpts<Token<I>> = {}): Token<I> {

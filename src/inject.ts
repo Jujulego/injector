@@ -4,11 +4,8 @@ import { AsyncToken, InjectableType, TOKEN, SyncToken, Token } from './defs/inde
 import { getMetadata } from './metadata.js';
 import { token$ } from './token.js';
 
-/**
- * Return an instance of given service
- */
-export function inject$<I>(type: InjectableType<I> | SyncToken<I>): I;
 export function inject$<I>(type: AsyncToken<I>): Promise<I>;
+export function inject$<I>(type: InjectableType<I> | SyncToken<I>): I;
 export function inject$<I>(type: InjectableType<I> | Token<I>): Awaitable<I>;
 
 export function inject$<I>(token: InjectableType<I> | Token<I>): Awaitable<I> {
