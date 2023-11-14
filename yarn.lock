@@ -379,25 +379,26 @@ __metadata:
   linkType: hard
 
 "@jujulego/aegis@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@jujulego/aegis@npm:2.0.1"
+  version: 2.1.1
+  resolution: "@jujulego/aegis@npm:2.1.1"
   dependencies:
-    "@jujulego/event-tree": "npm:^4.1.1"
+    "@jujulego/event-tree": "npm:^4.3.0"
     "@jujulego/utils": "npm:^2.0.0"
+    immer: "npm:^10.0.3"
   dependenciesMeta:
     vitest@0.34.5:
       unplugged: true
-  checksum: ef00529c967da7f1f196f21e2de5423fb0022a5f09dc84d2854a5bc5afde5fe6dda5255a22f68a8ad6fcef19367cb9b2569f33c8103aae34d63d85004f41da00
+  checksum: 7c6dfc3043401026c3a79f409e9f63a21f094a6dc8f2f1194f84d6483b4a3fe8b9b59713752fbd13f41bcc0ac0bd7bad90d07cf611e192224fae210529203a38
   languageName: node
   linkType: hard
 
-"@jujulego/event-tree@npm:^4.1.0, @jujulego/event-tree@npm:^4.1.1, @jujulego/event-tree@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "@jujulego/event-tree@npm:4.2.0"
+"@jujulego/event-tree@npm:^4.1.0, @jujulego/event-tree@npm:^4.1.1, @jujulego/event-tree@npm:^4.2.0, @jujulego/event-tree@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "@jujulego/event-tree@npm:4.3.0"
   dependenciesMeta:
     vitest@0.34.6:
       unplugged: true
-  checksum: 793a376c9dccec9ab88de3e0a1270fbfbf044e65aaf3cc96da16276b927f89153dd68fd43b70d2fa056fdd890f774069f603573313b647bb41bbde10567207a0
+  checksum: b8b1c50ba83dbb82f70b6dbcb6ba8b59964f54a7c836c62a883cced57d388def83c981dd0a5338d6af1f04d088d046b6f96b93a946313413d4136bb7a503bfde
   languageName: node
   linkType: hard
 
@@ -2714,6 +2715,13 @@ __metadata:
   version: 5.2.4
   resolution: "ignore@npm:5.2.4"
   checksum: 4f7caf5d2005da21a382d4bd1d2aa741a3bed51de185c8562dd7f899a81a620ac4fd0619b06f7029a38ae79e4e4c134399db3bd0192c703c3ef54bb82df3086c
+  languageName: node
+  linkType: hard
+
+"immer@npm:^10.0.3":
+  version: 10.0.3
+  resolution: "immer@npm:10.0.3"
+  checksum: 0be07be2f278bd1988112613648e0cf9a64fc316d5b4817f273b519fbfed0f1714275b041911f0b8c560c199b2e3430824ce620c23262c96c9d4efc9909ff1cc
   languageName: node
   linkType: hard
 
