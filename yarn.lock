@@ -498,11 +498,11 @@ __metadata:
   linkType: hard
 
 "@jujulego/utils@npm:^2.0.0, @jujulego/utils@npm:^2.0.1, @jujulego/utils@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "@jujulego/utils@npm:2.0.2"
+  version: 2.1.1
+  resolution: "@jujulego/utils@npm:2.1.1"
   dependencies:
     "@jujulego/event-tree": "npm:^4.1.0"
-  checksum: 8c2bd5110c2c99fea517029ae0503143aa84407b9762176ee646f0cf40530fb8c1399a49bca8eb7c6f8391a1487c9568322dda911063ade5959027848d9238b1
+  checksum: 16ad5be2ac5708b2922e9a07a5b1b450c9848f02e29d8af7c4805de1b2879766ac8e1c20036c1c3043eee3e4768907b8330e8b08df6a974df4a37854af5f7bb2
   languageName: node
   linkType: hard
 
