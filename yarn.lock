@@ -409,7 +409,7 @@ __metadata:
     "@jujulego/aegis": "npm:^2.0.1"
     "@jujulego/jill": "npm:2.3.5"
     "@jujulego/utils": "npm:^2.0.2"
-    "@jujulego/vite-plugin-swc": "npm:1.1.0"
+    "@jujulego/vite-plugin-swc": "npm:1.1.1"
     "@microsoft/eslint-formatter-sarif": "npm:3.0.0"
     "@swc/cli": "npm:0.1.63"
     "@swc/core": "npm:1.3.96"
@@ -506,12 +506,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jujulego/vite-plugin-swc@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@jujulego/vite-plugin-swc@npm:1.1.0"
+"@jujulego/vite-plugin-swc@npm:1.1.1":
+  version: 1.1.1
+  resolution: "@jujulego/vite-plugin-swc@npm:1.1.1"
   peerDependencies:
     "@swc/core": ^1.3.0
-  checksum: 27e092609be86ccace1e1a04edc764ab66c96cfe9f645f10bdc27ca6d6e533ef1702846027352cd5cda961aa2ac74fbeec415a419cd03ed083af6a0ae2e00063
+  checksum: ef589c78da28393a7fe6a08cdd6baef275443392370863ca5289aa16902b4e1afac94f2d0aba57e8fb8f5a4572b5bce124d638b721a1128940a96488307fc333
   languageName: node
   linkType: hard
 
