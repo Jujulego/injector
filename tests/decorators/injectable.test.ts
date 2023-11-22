@@ -1,4 +1,4 @@
-import { const$ } from '@jujulego/aegis';
+import { const$ } from 'kyrielle/refs';
 import { beforeEach, vi } from 'vitest';
 
 import { Injectable } from '@/src/decorators/injectable.js';

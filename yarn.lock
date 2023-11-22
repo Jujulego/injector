@@ -378,21 +378,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jujulego/aegis@npm:^2.0.1":
-  version: 2.1.1
-  resolution: "@jujulego/aegis@npm:2.1.1"
-  dependencies:
-    "@jujulego/event-tree": "npm:^4.3.0"
-    "@jujulego/utils": "npm:^2.0.0"
-    immer: "npm:^10.0.3"
-  dependenciesMeta:
-    vitest@0.34.5:
-      unplugged: true
-  checksum: 7c6dfc3043401026c3a79f409e9f63a21f094a6dc8f2f1194f84d6483b4a3fe8b9b59713752fbd13f41bcc0ac0bd7bad90d07cf611e192224fae210529203a38
-  languageName: node
-  linkType: hard
-
-"@jujulego/event-tree@npm:^4.1.0, @jujulego/event-tree@npm:^4.1.1, @jujulego/event-tree@npm:^4.2.0, @jujulego/event-tree@npm:^4.3.0":
+"@jujulego/event-tree@npm:^4.1.0, @jujulego/event-tree@npm:^4.1.1, @jujulego/event-tree@npm:^4.2.0":
   version: 4.3.0
   resolution: "@jujulego/event-tree@npm:4.3.0"
   dependenciesMeta:
@@ -406,9 +392,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@jujulego/injector@workspace:."
   dependencies:
-    "@jujulego/aegis": "npm:^2.0.1"
     "@jujulego/jill": "npm:2.3.5"
-    "@jujulego/utils": "npm:^2.0.2"
     "@jujulego/vite-plugin-swc": "npm:1.1.1"
     "@microsoft/eslint-formatter-sarif": "npm:3.0.0"
     "@swc/cli": "npm:0.1.63"
@@ -419,6 +403,7 @@ __metadata:
     "@vitest/coverage-v8": "npm:0.34.6"
     eslint: "npm:8.54.0"
     eslint-plugin-vitest: "npm:0.3.10"
+    kyrielle: "npm:^0.4.0"
     reflect-metadata: "npm:0.1.13"
     shx: "npm:0.3.4"
     typescript: "npm:5.3.2"
@@ -497,7 +482,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jujulego/utils@npm:^2.0.0, @jujulego/utils@npm:^2.0.1, @jujulego/utils@npm:^2.0.2":
+"@jujulego/utils@npm:^2.0.0, @jujulego/utils@npm:^2.0.1":
   version: 2.0.2
   resolution: "@jujulego/utils@npm:2.0.2"
   dependencies:
@@ -2708,13 +2693,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immer@npm:^10.0.3":
-  version: 10.0.3
-  resolution: "immer@npm:10.0.3"
-  checksum: 0be07be2f278bd1988112613648e0cf9a64fc316d5b4817f273b519fbfed0f1714275b041911f0b8c560c199b2e3430824ce620c23262c96c9d4efc9909ff1cc
-  languageName: node
-  linkType: hard
-
 "import-fresh@npm:^3.2.1, import-fresh@npm:^3.3.0":
   version: 3.3.0
   resolution: "import-fresh@npm:3.3.0"
@@ -3115,6 +3093,16 @@ __metadata:
   version: 2.0.0
   resolution: "kuler@npm:2.0.0"
   checksum: 9e10b5a1659f9ed8761d38df3c35effabffbd19fc6107324095238e4ef0ff044392cae9ac64a1c2dda26e532426485342226b93806bd97504b174b0dcf04ed81
+  languageName: node
+  linkType: hard
+
+"kyrielle@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "kyrielle@npm:0.4.0"
+  dependenciesMeta:
+    vitest@0.34.6:
+      unplugged: true
+  checksum: 5e852cf4f70fab1c74a895b78564e60052e45ab7e8777427e8c5b162bd8b716dc0007d4c92e1d952fa23a9f16548ba900074919c30f7509bd870caaee9ece553
   languageName: node
   linkType: hard
 

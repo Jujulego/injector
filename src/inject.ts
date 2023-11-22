@@ -1,4 +1,4 @@
-import type { Awaitable } from '@jujulego/utils';
+import type { Awaitable } from 'kyrielle';
 
 import { AsyncToken, InjectableType, TOKEN, SyncToken, Token } from './defs/index.js';
 import { getMetadata } from './metadata.js';
