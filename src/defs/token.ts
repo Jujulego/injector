@@ -1,4 +1,4 @@
-import { AsyncRef, Ref, SyncRef } from '@jujulego/aegis';
+import { AsyncRef, Ref, SyncRef } from 'kyrielle';
 
 /**
  * Token managing instance creation

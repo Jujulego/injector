@@ -1,10 +1,11 @@
-import { pipe$, PipeOperator, ref$ } from '@jujulego/aegis';
-import { Awaitable } from '@jujulego/utils';
+import { Awaitable } from 'kyrielle';
+import { PipeStep, pipe$ } from 'kyrielle/operators';
+import { ref$ } from 'kyrielle/refs';
 
 import { AsyncToken, SyncToken, Token } from './defs/index.js';
 
 export interface TokenOpts<T extends Token> {
-  modifiers?: PipeOperator<T, T>[];
+  modifiers?: PipeStep<T, T>[];
 }
 
 export function token$<I>(factory: () => PromiseLike<I>, opts?: TokenOpts<AsyncToken<I>>): AsyncToken<I>;

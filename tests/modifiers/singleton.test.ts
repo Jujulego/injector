@@ -1,4 +1,4 @@
-import { pipe$ } from '@jujulego/aegis';
+import { pipe$ } from 'kyrielle/operators';
 import { vi } from 'vitest';
 
 import { SyncToken } from '@/src/defs/token.js';

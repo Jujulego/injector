@@ -1,4 +1,4 @@
-import { const$ } from '@jujulego/aegis';
+import { const$ } from 'kyrielle/refs';
 
 import { InjectableType, TOKEN } from '../defs/index.js';
 import { defineMetadata } from '../metadata.js';
