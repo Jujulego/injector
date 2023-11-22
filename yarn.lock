@@ -3107,12 +3107,12 @@ __metadata:
   linkType: hard
 
 "kyrielle@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "kyrielle@npm:0.4.0"
+  version: 0.4.1
+  resolution: "kyrielle@npm:0.4.1"
   dependenciesMeta:
     vitest@0.34.6:
       unplugged: true
-  checksum: 5e852cf4f70fab1c74a895b78564e60052e45ab7e8777427e8c5b162bd8b716dc0007d4c92e1d952fa23a9f16548ba900074919c30f7509bd870caaee9ece553
+  checksum: 9cca0119c9109efd762c36434acd67baad6eb0339867d497bd9f5abd9aa44d3648bac81c8807143a7d241c62c6275a82de48701c82d5c9639d3c3908d8f810c8
   languageName: node
   linkType: hard
 
