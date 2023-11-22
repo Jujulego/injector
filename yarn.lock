@@ -413,7 +413,7 @@ __metadata:
     "@microsoft/eslint-formatter-sarif": "npm:3.0.0"
     "@swc/cli": "npm:0.1.63"
     "@swc/core": "npm:1.3.99"
-    "@types/node": "npm:18.18.11"
+    "@types/node": "npm:18.18.12"
     "@typescript-eslint/eslint-plugin": "npm:6.12.0"
     "@typescript-eslint/parser": "npm:6.12.0"
     "@vitest/coverage-v8": "npm:0.34.6"
@@ -918,12 +918,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.18.11":
-  version: 18.18.11
-  resolution: "@types/node@npm:18.18.11"
+"@types/node@npm:18.18.12":
+  version: 18.18.12
+  resolution: "@types/node@npm:18.18.12"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 05fe069846ae6accdaad2e4381dfd024c44b84010d5f213725009a34769f346cbb7b38d36931b4ff64f3af57b5fe0a3ccc33d0ef207a1ed9d76c1115b0d559a4
+  checksum: bd32120a52e7bdbf38dafa0f9cdb0c322115fc7fe38890b6c151507199d307652905077b878f0173c375389c87400d78f25a12fc8517b8f829547c95df37ef4e
   languageName: node
   linkType: hard
 
