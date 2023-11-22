@@ -12,7 +12,8 @@
   },
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "tests.d.ts"
   ],
   "type": "module",
   "module": "./dist/index.js",
@@ -20,12 +21,10 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
     "./tests": {
       "types": "./dist/tests/index.d.ts",
-      "import": "./dist/tests/index.js",
       "default": "./dist/tests/index.js"
     }
   },
@@ -42,6 +41,7 @@
     "reflect-metadata": "^0.1.13"
   },
   "dependencies": {
+    "@swc/helpers": "^0.5.3",
     "kyrielle": "^0.4.0"
   },
   "devDependencies": {
