@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@jujulego/aegis": "^2.0.1",
-    "@jujulego/utils": "^2.0.2"
+    "@jujulego/utils": "^3.0.0"
   },
   "devDependencies": {
     "@jujulego/jill": "2.3.5",
