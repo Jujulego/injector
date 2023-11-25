@@ -404,7 +404,7 @@ __metadata:
     "@vitest/coverage-v8": "npm:0.34.6"
     eslint: "npm:8.54.0"
     eslint-plugin-vitest: "npm:0.3.10"
-    kyrielle: "npm:^0.4.0"
+    kyrielle: "npm:^0.5.0"
     reflect-metadata: "npm:0.1.13"
     shx: "npm:0.3.4"
     typescript: "npm:5.3.2"
@@ -3106,13 +3106,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kyrielle@npm:^0.4.0":
-  version: 0.4.1
-  resolution: "kyrielle@npm:0.4.1"
+"kyrielle@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "kyrielle@npm:0.5.0"
   dependenciesMeta:
     vitest@0.34.6:
       unplugged: true
-  checksum: 9cca0119c9109efd762c36434acd67baad6eb0339867d497bd9f5abd9aa44d3648bac81c8807143a7d241c62c6275a82de48701c82d5c9639d3c3908d8f810c8
+  checksum: 77768c39f00c17c99f05e09ce14710fa321a90cd23e4423839cead34471bf6145c4b86e5c59e4b1ca83a3c685f9156e358d7038643e97da66a0da3066025cd61
   languageName: node
   linkType: hard
 
