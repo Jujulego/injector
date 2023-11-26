@@ -15,6 +15,7 @@ export interface InjectorScope {
 export interface ActiveScope extends Disposable {
   // Attributes
   readonly isActive: boolean;
+  readonly parent: InjectorScope;
 
   // Methods
   deactivate(): void;
