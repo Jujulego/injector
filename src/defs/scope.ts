@@ -5,11 +5,8 @@ export interface InjectorScope {
   readonly parent: InjectorScope | null;
 
   // Methods
-  localGet<T>(key: symbol): T | null;
-  localSet(key: symbol, obj: unknown): void;
-
-  globalGet<T>(key: symbol): T | null;
-  globalSet(key: symbol, obj: unknown): void;
+  get<T>(key: symbol): T | null;
+  set(key: symbol, obj: unknown, global?: boolean): void;
 }
 
 export interface ActiveScope extends Disposable {

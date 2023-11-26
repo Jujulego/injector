@@ -28,33 +28,19 @@ export function _scope$(name: string, parent: InjectorScope | null = null): Inje
     },
 
     // Methods
-    localGet<T>(key: symbol): T | null {
-      if (elements.has(key)) {
-        return elements.get(key) as T;
-      }
-
-      return null;
-    },
-    localSet(key: symbol, obj: unknown): void {
-      elements.set(key, obj);
-    },
-    globalGet<T>(key: symbol): T | null {
+    get<T>(key: symbol): T | null {
       if (elements.has(key)) {
         return elements.get(key) as T;
       }
 
       if (this.parent) {
-        return this.parent.globalGet(key);
+        return this.parent.get<T>(key);
       }
 
       return null;
     },
-    globalSet(key: symbol, obj: unknown): void {
-      if (!this.parent || elements.has(key)) {
-        elements.set(key, obj);
-      } else {
-        this.parent.globalSet(key, obj);
-      }
+    set(key: symbol, obj: unknown): void {
+      elements.set(key, obj);
     }
   };
 }
