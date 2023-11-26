@@ -389,6 +389,7 @@ __metadata:
   resolution: "@jujulego/injector@workspace:."
   dependencies:
     "@jujulego/jill": "npm:2.4.0"
+    "@jujulego/utils": "npm:^3.0.2"
     "@jujulego/vite-plugin-swc": "npm:1.1.1"
     "@microsoft/eslint-formatter-sarif": "npm:3.0.0"
     "@swc/cli": "npm:0.1.63"
@@ -488,6 +489,16 @@ __metadata:
   dependencies:
     "@jujulego/event-tree": "npm:^4.1.0"
   checksum: 16ad5be2ac5708b2922e9a07a5b1b450c9848f02e29d8af7c4805de1b2879766ac8e1c20036c1c3043eee3e4768907b8330e8b08df6a974df4a37854af5f7bb2
+  languageName: node
+  linkType: hard
+
+"@jujulego/utils@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@jujulego/utils@npm:3.0.2"
+  dependencies:
+    "@swc/helpers": "npm:^0.5.3"
+    kyrielle: "npm:^0.6.0"
+  checksum: 0ea1b90c679e95479d6203f1c03ecd1695de6de11c890146358c234d88a52a55ccc1e4d3cd120d56f1f34eb6c85f68a7acceded22f097f980bc3454268e090b6
   languageName: node
   linkType: hard
 
