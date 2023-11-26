@@ -1,24 +1,19 @@
+import { AsyncLocalStorage } from 'node:async_hooks';
+
 import { _scope$ } from '../bases/index.js';
 import { InjectorScope } from '../defs/index.js';
-
-// Symbols
-export const CURRENT_SCOPE = Symbol('jujulego/injector:current-scope');
 
 // Globals
 export const GLOBAL_SCOPE = _scope$('GLOBAL');
 
 // Utils
-declare global {
-  interface Window {
-    [CURRENT_SCOPE]?: InjectorScope;
-  }
-}
+const storage = new AsyncLocalStorage<InjectorScope>();
 
 export function getCurrentScope(): InjectorScope {
-  let current = self[CURRENT_SCOPE];
+  let current = storage.getStore();
 
   if (!current) {
-    current = GLOBAL_SCOPE;
+    current = _scope$('GLOBAL');
     setCurrentScope(current);
   }
 
@@ -26,5 +21,5 @@ export function getCurrentScope(): InjectorScope {
 }
 
 export function setCurrentScope(scope: InjectorScope): void {
-  self[CURRENT_SCOPE] = scope;
+  storage.enterWith(scope);
 }
