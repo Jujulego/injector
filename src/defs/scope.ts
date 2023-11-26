@@ -11,3 +11,11 @@ export interface InjectorScope {
   globalGet<T>(key: symbol): T | null;
   globalSet(key: symbol, obj: unknown): void;
 }
+
+export interface ActiveScope extends Disposable {
+  // Attributes
+  readonly isActive: boolean;
+
+  // Methods
+  deactivate(): void;
+}
