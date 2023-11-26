@@ -3,6 +3,6 @@ import { AsyncRef, Ref, SyncRef } from 'kyrielle';
 /**
  * Token managing instance creation
  */
-export type Token<I = unknown> = Ref<I>;
-export type SyncToken<I = unknown> = SyncRef<I>;
-export type AsyncToken<I = unknown> = AsyncRef<I>;
+export interface Token<out I = unknown> extends Ref<I> {}
+export interface SyncToken<out I = unknown> extends SyncRef<I> {}
+export interface AsyncToken<out I = unknown> extends AsyncRef<I> {}
