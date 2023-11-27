@@ -1,6 +1,6 @@
-import { getCurrentScope, setCurrentScope } from '#current-scope';
-import { _scope$ } from './bases/index.js';
-import { ActiveScope } from './defs/index.js';
+import { _scope$ } from './bases/scope.js';
+import { ActiveScope } from './defs/scope.js';
+import { getCurrentScope, setCurrentScope } from './current-scope.js';
 
 /**
  * Creates and activate a new token scope
@@ -20,8 +20,8 @@ export function scope$(name: string): ActiveScope {
     deactivate() {
       setCurrentScope(scope.parent);
     },
-    [Symbol.dispose]() {
+    [Symbol.dispose ?? Symbol.for('Symbol.dispose')]: () => {
       setCurrentScope(scope.parent);
-    }
+    },
   });
 }

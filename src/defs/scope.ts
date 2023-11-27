@@ -9,7 +9,7 @@ export interface InjectorScope {
   set(key: symbol, obj: unknown, global?: boolean): void;
 }
 
-export interface ActiveScope extends Disposable {
+export interface ActiveScope extends Disposable, InjectorScope {
   // Attributes
   readonly isActive: boolean;
   readonly parent: InjectorScope;
