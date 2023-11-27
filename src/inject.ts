@@ -5,8 +5,7 @@ import { TOKEN } from './defs/index.js';
 import { token$ } from './token.js';
 
 export function inject$<T>(token: AsyncReadable<T>): Promise<T>;
-export function inject$<T>(token: SyncReadable<T>): T;
-export function inject$<T>(type: InjectableType<T>): T;
+export function inject$<T>(token: SyncReadable<T> | InjectableType<T>): T;
 
 export function inject$<T>(arg: Readable<T> | InjectableType<T>): Awaitable<T> {
   if (typeof arg === 'function') {
