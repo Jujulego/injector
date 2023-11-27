@@ -1,48 +1,24 @@
-import { Lock } from '@jujulego/utils';
-import { AsyncReadable, Awaitable, Readable, SyncReadable } from 'kyrielle';
+import { SyncReadable } from 'kyrielle';
 
 import { getCurrentScope } from '#current-scope';
 
 /**
- * Async token, creating an object for async injection.
- */
-export function token$<const T>(fn: () => PromiseLike<T>, opts: { async: true }): AsyncReadable<T>;
-
-/**
  * Token, creating an object for injection.
  */
-export function token$<const T>(fn: () => T, opts?: { async?: false }): SyncReadable<T>;
-
-export function token$<const T>(fn: () => Awaitable<T>, opts: { async?: boolean } = {}): Readable<T> {
+export function token$<const T>(fn: () => T): SyncReadable<T> {
   const id = Symbol();
 
-  if (opts.async) {
-    const lock = new Lock();
-
-    fn = () => {
+  return {
+    read(): T {
       const scope = getCurrentScope();
+      let obj = scope.get<T>(id);
 
-      return lock.with(async () => {
-        const obj: T = await fn();
+      if (obj === null) {
+        obj = fn();
         scope.set(id, obj);
-
-        return obj;
-      });
-    };
-  } else {
-    fn = () => {
-      const scope = getCurrentScope();
-
-      const obj = fn() as T;
-      scope.set(id, obj);
+      }
 
       return obj;
-    };
-  }
-
-  return {
-    read(): Awaitable<T> {
-      return getCurrentScope().get<T>(id) ?? fn();
     }
   };
 }
