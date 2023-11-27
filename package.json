@@ -19,12 +19,6 @@
   "type": "module",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "imports": {
-    "#current-scope": {
-      "node": "./dynamic/current-scope.node",
-      "default": "./dynamic/current-scope.default"
-    }
-  },
   "exports": {
     "types": "./dist/index.d.ts",
     "default": "./dist/index.js"
