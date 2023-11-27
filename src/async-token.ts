@@ -1,7 +1,8 @@
 import { Lock } from '@jujulego/utils';
 import { AsyncReadable } from 'kyrielle';
 
-import { getCurrentScope } from './current-scope.js';
+import { getCurrentScope } from '#/current-scope';
+import { GLOBAL_SCOPE } from './globals.js';
 
 let _id = 0;
 
@@ -20,7 +21,7 @@ export function asyncToken$<const T>(fn: () => PromiseLike<T>): AsyncReadable<T>
 
     // Methods
     read(): Promise<T> {
-      const scope = getCurrentScope();
+      const scope = getCurrentScope(GLOBAL_SCOPE);
 
       return lock.with(async () => {
         let obj = scope.get<T>(id);

@@ -10,12 +10,18 @@
   "publishConfig": {
     "access": "public"
   },
-  "sideEffects": [
-    "./dist/globals"
-  ],
+  "sideEffects": false,
   "files": [
-    "./dist"
+    "./dist",
+    "./dynamic"
   ],
+  "imports": {
+    "#/current-scope": {
+      "types": "./dynamic/current-scope.d.ts",
+      "node": "./dynamic/current-scope.node.js",
+      "default": "./dynamic/current-scope.js"
+    }
+  },
   "type": "module",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -31,9 +37,6 @@
     "build:types": "tsc --project tsconfig.build.json",
     "test": "vitest run",
     "test:types": "vitest typecheck"
-  },
-  "peerDependencies": {
-    "reflect-metadata": "^0.1.13"
   },
   "dependencies": {
     "@jujulego/utils": "^3.0.4",
@@ -52,7 +55,6 @@
     "@vitest/coverage-v8": "0.34.6",
     "eslint": "8.54.0",
     "eslint-plugin-vitest": "0.3.10",
-    "reflect-metadata": "0.1.13",
     "shx": "0.3.4",
     "typescript": "5.3.2",
     "vite": "5.0.2",
