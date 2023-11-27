@@ -1,27 +1,34 @@
 import { Lock } from '@jujulego/utils';
-import { Awaitable, Readable } from 'kyrielle';
+import { AsyncReadable } from 'kyrielle';
 
-import { getCurrentScope } from '#current-scope';
+import { getCurrentScope } from './current-scope.js';
+
+let _id = 0;
 
 /**
  * Async token, creating an object for async injection.
  */
-export function asyncToken$<const T>(fn: () => PromiseLike<T>): Readable<T> {
-  const id = Symbol();
-   const lock = new Lock();
+export function asyncToken$<const T>(fn: () => PromiseLike<T>): AsyncReadable<T> & { readonly id: symbol } {
+  const id = Symbol(`async-token#${++_id}`);
+  const lock = new Lock();
 
   return {
-    read(): Awaitable<T> {
-      const scope = getCurrentScope();
-      const obj = scope.get<T>(id);
+    // Properties
+    get id() {
+      return id;
+    },
 
-      if (obj !== null) {
-        return obj;
-      }
+    // Methods
+    read(): Promise<T> {
+      const scope = getCurrentScope();
 
       return lock.with(async () => {
-        const obj: T = await fn();
-        scope.set(id, obj);
+        let obj = scope.get<T>(id);
+
+        if (obj === null) {
+          obj = await fn();
+          scope.set(id, obj);
+        }
 
         return obj;
       });

@@ -20,7 +20,7 @@ export function scope$(name: string): ActiveScope {
     deactivate() {
       setCurrentScope(scope.parent);
     },
-    [Symbol.dispose ?? Symbol.for('Symbol.dispose')]: () => {
+    [Symbol.dispose ?? Symbol.for('Symbol.dispose')]() {
       setCurrentScope(scope.parent);
     },
   });
