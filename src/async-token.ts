@@ -1,6 +1,7 @@
 import { Lock } from '@jujulego/utils';
 import { AsyncReadable } from 'kyrielle';
 
+// @ts-ignore: Outside of typescript's rootDir in build
 import { getCurrentScope } from '#/current-scope';
 import { GLOBAL_SCOPE } from './globals.js';
 
