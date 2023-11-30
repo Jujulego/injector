@@ -4,13 +4,11 @@ import { AsyncReadable } from 'kyrielle';
 import { getCurrentScope } from '#/current-scope';
 import { GLOBAL_SCOPE } from './globals.js';
 
-let _id = 0;
-
 /**
  * Async token, creating an object for async injection.
  */
 export function asyncToken$<const T>(fn: () => PromiseLike<T>): AsyncReadable<T> & { readonly id: symbol } {
-  const id = Symbol(`async-token#${++_id}`);
+  const id = Symbol();
   const lock = new Lock();
 
   return {
