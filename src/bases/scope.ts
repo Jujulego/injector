@@ -1,4 +1,5 @@
 import { InjectorScope } from '../defs/scope.js';
+import { Token } from '../defs/token.js';
 
 /**
  * Creates a new injector scope
@@ -28,19 +29,19 @@ export function _scope$(name: string, parent: InjectorScope | null = null): Inje
     },
 
     // Methods
-    get<T>(key: symbol): T | null {
-      if (elements.has(key)) {
-        return elements.get(key) as T;
+    get<T>(token: Token<T>): T | null {
+      if (elements.has(token.id)) {
+        return elements.get(token.id) as T;
       }
 
       if (this.parent) {
-        return this.parent.get<T>(key);
+        return this.parent.get<T>(token);
       }
 
       return null;
     },
-    set(key: symbol, obj: unknown): void {
-      elements.set(key, obj);
+    set<T>(token: Token<T>, obj: T): void {
+      elements.set(token.id, obj);
     }
   };
 }

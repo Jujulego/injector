@@ -1,12 +1,14 @@
 // Types
+import { Token } from './token.js';
+
 export interface InjectorScope {
   // Attributes
   readonly name: string;
   readonly parent: InjectorScope | null;
 
   // Methods
-  get<T>(key: symbol): T | null;
-  set(key: symbol, obj: unknown, global?: boolean): void;
+  get<T>(token: Token<T>): T | null;
+  set<T>(token: Token<T>, obj: T, global?: boolean): void;
 }
 
 export interface ActiveScope extends Disposable, InjectorScope {

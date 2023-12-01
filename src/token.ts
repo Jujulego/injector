@@ -2,12 +2,13 @@ import { SyncReadable } from 'kyrielle';
 
 // @ts-ignore: Outside of typescript's rootDir in build
 import { getCurrentScope } from '#/current-scope';
+import { Token } from './defs/index.js';
 import { GLOBAL_SCOPE } from './globals.js';
 
 /**
  * Token, creating an object for injection.
  */
-export function token$<const T>(fn: () => T): SyncReadable<T> & { readonly id: symbol } {
+export function token$<const T>(fn: () => T): SyncReadable<T> & Token<T> {
   const id = Symbol();
 
   return {
@@ -19,11 +20,11 @@ export function token$<const T>(fn: () => T): SyncReadable<T> & { readonly id: s
     // Methods
     read(): T {
       const scope = getCurrentScope(GLOBAL_SCOPE);
-      let obj = scope.get<T>(id);
+      let obj = scope.get<T>(this);
 
       if (obj === null) {
         obj = fn();
-        scope.set(id, obj);
+        scope.set(this, obj);
       }
 
       return obj;

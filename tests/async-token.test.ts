@@ -8,7 +8,7 @@ describe('asyncToken$', () => {
     const token = asyncToken$(async () => ({ life: 42 }));
 
     await expect(token.read()).resolves.toStrictEqual({ life: 42 });
-    expect(GLOBAL_SCOPE.get(token.id)).toStrictEqual({ life: 42 });
+    expect(GLOBAL_SCOPE.get(token)).toStrictEqual({ life: 42 });
   });
 
   it('should store object in active scope', async () => {
@@ -17,8 +17,8 @@ describe('asyncToken$', () => {
 
     await token.read();
 
-    expect(scope.get(token.id)).toStrictEqual({ life: 42 });
-    expect(GLOBAL_SCOPE.get(token.id)).toBeNull();
+    expect(scope.get(token)).toStrictEqual({ life: 42 });
+    expect(GLOBAL_SCOPE.get(token)).toBeNull();
   });
 
   it('should call fn only once', async () => {
