@@ -1,7 +1,7 @@
 import { SyncReadable } from 'kyrielle';
 
 // @ts-ignore: Outside of typescript's rootDir in build
-import { getCurrentScope } from '#/current-scope';
+import { getCurrentScope } from '#current-scope';
 import { Token } from './defs/index.js';
 import { GLOBAL_SCOPE } from './globals.js';
 

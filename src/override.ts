@@ -1,7 +1,7 @@
 import { Readable } from 'kyrielle';
 
 // @ts-ignore: Outside of typescript's rootDir in build
-import { getCurrentScope } from '#/current-scope';
+import { getCurrentScope } from '#current-scope';
 import { InjectableType } from './decorators/index.js';
 import { getTypeToken } from './utils/token.js';
 import { GLOBAL_SCOPE } from './globals.js';

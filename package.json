@@ -1,6 +1,6 @@
 {
   "name": "@jujulego/injector",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "license": "MIT",
   "author": "Julien Capellari <julien.capellari@gmail.com>",
   "repository": {
@@ -16,7 +16,7 @@
     "./dynamic"
   ],
   "imports": {
-    "#/current-scope": {
+    "#current-scope": {
       "types": "./dynamic/current-scope.d.ts",
       "node": "./dynamic/current-scope.node.js",
       "default": "./dynamic/current-scope.js"

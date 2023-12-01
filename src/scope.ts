@@ -3,7 +3,7 @@ import { ActiveScope } from './defs/scope.js';
 import { GLOBAL_SCOPE } from './globals.js';
 
 // @ts-ignore: Outside of typescript's rootDir in build
-import { getCurrentScope, setCurrentScope } from '#/current-scope';
+import { getCurrentScope, setCurrentScope } from '#current-scope';
 
 /**
  * Creates and activate a new token scope
