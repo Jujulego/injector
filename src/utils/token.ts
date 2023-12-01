@@ -1,10 +1,12 @@
+import { SyncReadable } from 'kyrielle';
+
 import { InjectableType } from '../decorators/index.js';
 import { TOKEN } from '../defs/index.js';
-import { SyncReadable } from 'kyrielle';
+import { getMetadata } from './metadata.js';
 import { token$ } from '../token.js';
 
 export function getTypeToken<T>(type: InjectableType<T>) {
-  const metadata = type[Symbol.metadata ?? Symbol('Symbol.metadata')] ??= {};
+  const metadata = getMetadata(type);
   let token = metadata[TOKEN] as SyncReadable<T>;
 
   if (!token) {
