@@ -1,6 +1,6 @@
-// Types
 import { Token } from './token.js';
 
+// Types
 export interface InjectorScope {
   // Attributes
   readonly name: string;
