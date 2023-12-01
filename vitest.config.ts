@@ -10,7 +10,6 @@ export default defineConfig({
       reporter: ['text', 'lcovonly'],
     },
     globals: true,
-    setupFiles: ['tests/setup.ts'],
     typecheck: {
       tsconfig: 'tests/tsconfig.json',
     }

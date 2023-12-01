@@ -1,5 +1,7 @@
-import { InjectableType, SyncToken } from '../defs/index.js';
+import { SyncReadable } from 'kyrielle';
+
 import { inject$ } from '../inject.js';
+import { InjectableType } from './injectable.js';
 
 // Types
 export interface InjectOpts {
@@ -28,7 +30,7 @@ export type InjectDecorator<I> = InjectFieldDecorator<I> | InjectAccessorDecorat
  * @param type Service to inject
  * @param opts
  */
-export function Inject<I>(type: InjectableType<I> | SyncToken<I>, opts?: { lazy?: false }): InjectFieldDecorator<I>;
+export function Inject<T>(type: InjectableType<T> | SyncReadable<T>, opts?: { lazy?: false }): InjectFieldDecorator<T>;
 
 /**
  * Lazily inject service instance into the decorated accessor, using `inject$`.
@@ -45,17 +47,17 @@ export function Inject<I>(type: InjectableType<I> | SyncToken<I>, opts?: { lazy?
  * @param type Service to inject
  * @param opts
  */
-export function Inject<I>(type: InjectableType<I> | SyncToken<I>, opts: { lazy: true }): InjectAccessorDecorator<I>;
+export function Inject<T>(type: InjectableType<T> | SyncReadable<T>, opts: { lazy: true }): InjectAccessorDecorator<T>;
 
-export function Inject<I>(type: InjectableType<I> | SyncToken<I>, opts: InjectOpts = {}): InjectDecorator<I> {
-  return <InjectDecorator<I>>((target: undefined | ClassAccessorDecoratorTarget<unknown, I>, ctx: ClassFieldDecoratorContext<unknown, I> | ClassAccessorDecoratorContext<unknown, I>) => {
+export function Inject<T>(type: InjectableType<T> | SyncReadable<T>, opts: InjectOpts = {}): InjectDecorator<T> {
+  return <InjectDecorator<T>>((target: undefined | ClassAccessorDecoratorTarget<unknown, T>, ctx: ClassFieldDecoratorContext<unknown, T> | ClassAccessorDecoratorContext<unknown, T>) => {
     if (ctx.kind === 'accessor' && opts.lazy) {
       return {
         get() {
           let instance = target!.get.call(this);
 
           if (instance === undefined) {
-            instance = inject$(type);
+            instance = inject$<T>(type);
             target!.set.call(this, instance);
           }
 

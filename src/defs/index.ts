@@ -1,3 +1,3 @@
-export * from './newable-type.js';
+export * from './scope.js';
 export * from './symbols.js';
 export * from './token.js';

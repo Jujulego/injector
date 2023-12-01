@@ -4,6 +4,7 @@
     "rootDir": "../",
     "baseUrl": "./",
     "paths": {
+      "#/current-scope": ["../dynamic/current-scope.js"],
       "@/src/*": ["../src/*"],
     },
     "types": [

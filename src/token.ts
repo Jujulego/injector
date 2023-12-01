@@ -1,23 +1,33 @@
-import { Awaitable } from 'kyrielle';
-import { PipeStep, pipe$ } from 'kyrielle/operators';
-import { ref$ } from 'kyrielle/refs';
+import { SyncReadable } from 'kyrielle';
 
-import { AsyncToken, SyncToken, Token } from './defs/index.js';
+// @ts-ignore: Outside of typescript's rootDir in build
+import { getCurrentScope } from '#/current-scope';
+import { Token } from './defs/index.js';
+import { GLOBAL_SCOPE } from './globals.js';
 
-export interface TokenOpts<T extends Token> {
-  modifiers?: PipeStep<T, T>[];
-}
+/**
+ * Token, creating an object for injection.
+ */
+export function token$<const T>(fn: () => T): SyncReadable<T> & Token<T> {
+  const id = Symbol();
 
-export function token$<I>(factory: () => PromiseLike<I>, opts?: TokenOpts<AsyncToken<I>>): AsyncToken<I>;
-export function token$<I>(factory: () => I, opts?: TokenOpts<SyncToken<I>>): SyncToken<I>;
-export function token$<I>(factory: () => Awaitable<I>, opts?: TokenOpts<Token<I>>): Token<I>;
+  return {
+    // Properties
+    get id() {
+      return id;
+    },
 
-export function token$<I>(factory: () => Awaitable<I>, opts: TokenOpts<Token<I>> = {}): Token<I> {
-  let token = ref$<I>(factory);
+    // Methods
+    read(): T {
+      const scope = getCurrentScope(GLOBAL_SCOPE);
+      let obj = scope.get<T>(this);
 
-  if (opts.modifiers) {
-    token = pipe$(token, ...opts.modifiers);
-  }
+      if (obj === null) {
+        obj = fn();
+        scope.set(this, obj);
+      }
 
-  return token;
+      return obj;
+    }
+  };
 }

@@ -1,18 +1,28 @@
-import type { Awaitable } from 'kyrielle';
+import { AsyncReadable, Awaitable, Readable, SyncReadable } from 'kyrielle';
 
-import { AsyncToken, InjectableType, TOKEN, SyncToken, Token } from './defs/index.js';
-import { getMetadata } from './metadata.js';
+import { InjectableType } from './decorators/index.js';
+import { TOKEN } from './defs/index.js';
 import { token$ } from './token.js';
 
-export function inject$<I>(type: AsyncToken<I>): Promise<I>;
-export function inject$<I>(type: InjectableType<I> | SyncToken<I>): I;
-export function inject$<I>(type: InjectableType<I> | Token<I>): Awaitable<I>;
+export function inject$<T>(token: AsyncReadable<T>): Promise<T>;
+export function inject$<T>(token: SyncReadable<T> | InjectableType<T>): T;
 
-export function inject$<I>(token: InjectableType<I> | Token<I>): Awaitable<I> {
-  if (typeof token === 'function') {
-    const type = token;
-    token = getMetadata<Token<I>>(token, TOKEN) ?? token$(() => new type());
+export function inject$<T>(arg: Readable<T> | InjectableType<T>): Awaitable<T> {
+  if (typeof arg === 'function') {
+    arg = getTypeToken(arg);
   }
 
-  return token.read();
+  return arg.read();
+}
+
+function getTypeToken<T>(type: InjectableType<T>) {
+  const metadata = type[Symbol.metadata ?? Symbol('Symbol.metadata')] ??= {};
+  let token = metadata[TOKEN] as SyncReadable<T>;
+
+  if (!token) {
+    token = token$(() => new type());
+    metadata[TOKEN] = token;
+  }
+
+  return token;
 }
