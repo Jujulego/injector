@@ -1,4 +1,7 @@
-import { SyncReadable } from 'kyrielle';
+import { Readable, SyncReadable } from 'kyrielle';
+import { pipe$ } from 'kyrielle/operators';
+import { ref$ } from 'kyrielle/refs';
+import { cache$ } from 'kyrielle/steps';
 
 // @ts-ignore: Outside of typescript's rootDir in build
 import { getCurrentScope } from '#current-scope';
@@ -8,26 +11,23 @@ import { GLOBAL_SCOPE } from './globals.js';
 /**
  * Token, creating an object for injection.
  */
-export function token$<const T>(fn: () => T): SyncReadable<T> & Token<T> {
-  const id = Symbol();
+export function token$<const T>(fn: () => PromiseLike<T>): Readable<T> & Token<T>;
 
-  return {
-    // Properties
+/**
+ * Token, creating an object for injection.
+ */
+export function token$<const T>(fn: () => T): SyncReadable<T> & Token<T>;
+
+export function token$<const T>(fn: () => PromiseLike<T>): Readable<T> & Token<T> {
+  const id = Symbol();
+  const token: Token<T> = {
     get id() {
       return id;
     },
-
-    // Methods
-    read(): T {
-      const scope = getCurrentScope(GLOBAL_SCOPE);
-      let obj = scope.get<T>(this);
-
-      if (obj === null) {
-        obj = fn();
-        scope.set(this, obj);
-      }
-
-      return obj;
-    }
   };
+
+  return Object.assign(token, pipe$(
+    ref$(fn),
+    cache$(() => getCurrentScope(GLOBAL_SCOPE).ref(token))
+  ));
 }
