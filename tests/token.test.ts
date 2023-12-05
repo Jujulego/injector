@@ -4,37 +4,67 @@ import { scope$ } from '@/src/scope.js';
 
 // Tests
 describe('token$', () => {
-  it('should return object created by fn, and store it in global scope', () => {
-    const token = token$(() => ({ life: 42 }));
-
-    expect(token.read()).toStrictEqual({ life: 42 });
-    expect(GLOBAL_SCOPE.get(token)).toStrictEqual({ life: 42 });
-  });
-
   it('should store object in active scope', () => {
-    using scope = scope$('test');
     const token = token$(() => ({ life: 42 }));
+    using scope = scope$('test');
 
     token.read();
 
     expect(scope.get(token)).toStrictEqual({ life: 42 });
-    expect(GLOBAL_SCOPE.get(token)).toBeNull();
+    expect(GLOBAL_SCOPE.get(token)).toBeUndefined();
   });
 
-  it('should call fn only once', () => {
-    const fn = vi.fn(() => ({ life: 42 }));
-    const token = token$(fn);
+  describe('sync fn', () => {
+    it('should return object created by fn, and store it in global scope', () => {
+      const token = token$(() => ({ life: 42 }));
 
-    token.read();
-    token.read();
-    token.read();
+      expect(token.read()).toStrictEqual({ life: 42 });
+      expect(GLOBAL_SCOPE.get(token)).toStrictEqual({ life: 42 });
+    });
 
-    expect(fn).toHaveBeenCalledOnce();
+    it('should call fn only once', () => {
+      const fn = vi.fn(() => ({ life: 42 }));
+      const token = token$(fn);
+
+      token.read();
+      token.read();
+      token.read();
+
+      expect(fn).toHaveBeenCalledOnce();
+    });
+
+    it('should return the same instance', () => {
+      const token = token$(() => ({ life: 42 }));
+
+      expect(token.read()).toStrictEqual(token.read());
+    });
   });
 
-  it('should return the same instance', () => {
-    const token = token$(() => ({ life: 42 }));
+  describe('async fn', () => {
+    it('should return object created by fn, and store it in global scope', async () => {
+      const token = token$(async () => ({ life: 42 }));
 
-    expect(token.read()).toStrictEqual(token.read());
+      await expect(token.read()).resolves.toStrictEqual({ life: 42 });
+      expect(GLOBAL_SCOPE.get(token)).toStrictEqual({ life: 42 });
+    });
+
+    it('should call fn only once', async () => {
+      const fn = vi.fn(async () => ({ life: 42 }));
+      const token = token$(fn);
+
+      await Promise.all([
+        token.read(),
+        token.read(),
+        token.read(),
+      ]);
+
+      expect(fn).toHaveBeenCalledOnce();
+    });
+
+    it('should return the same instance', async () => {
+      const token = token$(async () => ({ life: 42 }));
+
+      await expect(token.read()).resolves.toStrictEqual(await token.read());
+    });
   });
 });
