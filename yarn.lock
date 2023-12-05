@@ -3054,14 +3054,14 @@ __metadata:
   linkType: hard
 
 "kyrielle@npm:^0.8.0":
-  version: 0.8.0
-  resolution: "kyrielle@npm:0.8.0"
+  version: 0.8.1
+  resolution: "kyrielle@npm:0.8.1"
   dependencies:
     immer: "npm:^10.0.3"
   dependenciesMeta:
     vitest@0.34.5:
       unplugged: true
-  checksum: aa50b6a00d4a3e8e33faa99e47929437995f9761db9e488a42f85bed12e55ebc6c030ded3dc88b84588fb170757fcb4f5d41136f53385e3dd68b43526a33fb81
+  checksum: ffd5342426d0a4b37823b4a51b5eada43cd7b6b750bc12b317fb66527ef90a7793cc24df0405addde4e3d5f5fa58b0c5225a724b6c68f379c7a276ba86645c34
   languageName: node
   linkType: hard
 
