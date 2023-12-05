@@ -39,7 +39,6 @@
     "test:types": "vitest typecheck"
   },
   "dependencies": {
-    "@jujulego/utils": "^3.0.4",
     "@swc/helpers": "^0.5.3",
     "kyrielle": "^0.8.1"
   },

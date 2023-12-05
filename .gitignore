@@ -13,3 +13,4 @@ coverage
 dist
 *.log
 *.pid
+dynamic/current-scope.d.ts

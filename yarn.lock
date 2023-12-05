@@ -389,7 +389,6 @@ __metadata:
   resolution: "@jujulego/injector@workspace:."
   dependencies:
     "@jujulego/jill": "npm:2.4.0"
-    "@jujulego/utils": "npm:^3.0.4"
     "@jujulego/vite-plugin-swc": "npm:1.1.1"
     "@microsoft/eslint-formatter-sarif": "npm:3.0.0"
     "@swc/cli": "npm:0.1.63"
@@ -486,16 +485,6 @@ __metadata:
   dependencies:
     "@jujulego/event-tree": "npm:^4.1.0"
   checksum: 16ad5be2ac5708b2922e9a07a5b1b450c9848f02e29d8af7c4805de1b2879766ac8e1c20036c1c3043eee3e4768907b8330e8b08df6a974df4a37854af5f7bb2
-  languageName: node
-  linkType: hard
-
-"@jujulego/utils@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "@jujulego/utils@npm:3.0.4"
-  dependencies:
-    "@swc/helpers": "npm:^0.5.3"
-    kyrielle: "npm:^0.6.0"
-  checksum: 259e8c2979e48ec3c4c24cba9f33ba99a3f2ae0e0c65e017c93b5721dca598cb56d467b856fdf05060a03010797cf8cc325251c8ebfbe8b8c593c588eee2a523
   languageName: node
   linkType: hard
 
@@ -3038,18 +3027,6 @@ __metadata:
   dependencies:
     json-buffer: "npm:3.0.1"
   checksum: 167eb6ef64cc84b6fa0780ee50c9de456b422a1e18802209234f7c2cf7eae648c7741f32e50d7e24ccb22b24c13154070b01563d642755b156c357431a191e75
-  languageName: node
-  linkType: hard
-
-"kyrielle@npm:^0.6.0":
-  version: 0.6.0
-  resolution: "kyrielle@npm:0.6.0"
-  dependencies:
-    immer: "npm:^10.0.3"
-  dependenciesMeta:
-    vitest@0.34.6:
-      unplugged: true
-  checksum: 7045240dbb778d939cd40267fddad5354a509789f8b7424dcbba3a096fb01141ebbefdfd0fec0a832857449a1e88b76f57889193e29642d0bbf2893ca43fd15c
   languageName: node
   linkType: hard
 
