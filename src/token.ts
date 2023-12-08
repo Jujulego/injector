@@ -4,7 +4,8 @@ import { ref$ } from 'kyrielle/refs';
 import { cache$ } from 'kyrielle/steps';
 
 // @ts-ignore: Outside of typescript's rootDir in build
-import { getCurrentScope } from '#current-scope';
+import * as history from '#history';
+
 import { Token } from './defs/index.js';
 import { GLOBAL_SCOPE } from './globals.js';
 
@@ -28,6 +29,6 @@ export function token$<const T>(fn: () => PromiseLike<T>): Readable<T> & Token<T
 
   return Object.assign(token, pipe$(
     ref$(fn),
-    cache$(() => getCurrentScope(GLOBAL_SCOPE).ref(token))
+    cache$(() => history.getCurrentScope(GLOBAL_SCOPE).ref(token))
   ));
 }

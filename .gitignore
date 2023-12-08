@@ -11,6 +11,6 @@
 .vitest
 coverage
 dist
+dynamic/*.d.ts
 *.log
 *.pid
-dynamic/current-scope.d.ts

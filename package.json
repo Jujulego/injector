@@ -16,10 +16,10 @@
     "./dynamic"
   ],
   "imports": {
-    "#current-scope": {
-      "types": "./dynamic/current-scope.d.ts",
-      "node": "./dynamic/current-scope.node.js",
-      "default": "./dynamic/current-scope.js"
+    "#history": {
+      "types": "./dynamic/history.d.ts",
+      "node": "./dynamic/history.node.js",
+      "default": "./dynamic/history.js"
     }
   },
   "type": "module",
