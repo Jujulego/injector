@@ -399,7 +399,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:6.13.2"
     "@vitest/coverage-v8": "npm:0.34.6"
     eslint: "npm:8.55.0"
-    eslint-plugin-vitest: "npm:0.3.10"
+    eslint-plugin-vitest: "npm:0.3.12"
     kyrielle: "npm:^0.8.1"
     shx: "npm:0.3.4"
     typescript: "npm:5.3.3"
@@ -1029,7 +1029,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:6.13.2, @typescript-eslint/utils@npm:^6.11.0":
+"@typescript-eslint/utils@npm:6.13.2, @typescript-eslint/utils@npm:^6.13.2":
   version: 6.13.2
   resolution: "@typescript-eslint/utils@npm:6.13.2"
   dependencies:
@@ -1968,11 +1968,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-vitest@npm:0.3.10":
-  version: 0.3.10
-  resolution: "eslint-plugin-vitest@npm:0.3.10"
+"eslint-plugin-vitest@npm:0.3.12":
+  version: 0.3.12
+  resolution: "eslint-plugin-vitest@npm:0.3.12"
   dependencies:
-    "@typescript-eslint/utils": "npm:^6.11.0"
+    "@typescript-eslint/utils": "npm:^6.13.2"
   peerDependencies:
     eslint: ">=8.0.0"
     vitest: "*"
@@ -1981,7 +1981,7 @@ __metadata:
       optional: true
     vitest:
       optional: true
-  checksum: f574e6421319e3d4ce00aafe89452bf463c82b65e25296c859fad37ec30c9d1d2f33bbcb3b3f40ec3b0770cf07b05c2c4fbab15877048963636e884863947559
+  checksum: 3850224a96c350f90bd96cea32b849722fe17cb0ffb84d9ca0c9dd66d7b1458fab06c2b5881305317cc4733cb29ab7dccfbce1adb6496bb3847d723a4a76027b
   languageName: node
   linkType: hard
 
