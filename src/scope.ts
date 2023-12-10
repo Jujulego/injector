@@ -10,25 +10,24 @@ import { GLOBAL_SCOPE } from './globals.js';
  * @param name
  */
 export function scope$(name: string): ActiveScope {
-  const scope = _scope$(name, history.getCurrentScope(GLOBAL_SCOPE));
-  history.pushScope(scope);
-
-  return Object.assign(scope, {
-    // Properties
-    get isActive() {
-      return history.getCurrentScope(GLOBAL_SCOPE) === scope;
-    },
+  return {
+    ..._scope$(name, history.getCurrentScope(GLOBAL_SCOPE)),
 
     // Methods
     activate() {
-      history.pushScope(scope);
-      return this as ActiveScope;
+      history.pushScope(this);
+      return this;
     },
     deactivate() {
       history.popScope();
     },
     [Symbol.dispose ?? Symbol.for('Symbol.dispose')]() {
-      history.popScope();
+      this.deactivate();
     },
-  });
+
+    // Properties
+    get isActive() {
+      return history.getCurrentScope(GLOBAL_SCOPE) === this;
+    },
+  };
 }

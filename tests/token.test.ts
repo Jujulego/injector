@@ -6,7 +6,7 @@ import { scope$ } from '@/src/scope.js';
 describe('token$', () => {
   it('should store object in active scope', () => {
     const token = token$(() => ({ life: 42 }));
-    using scope = scope$('test');
+    using scope = scope$('test').activate();
 
     token.read();
 
