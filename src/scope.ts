@@ -1,30 +1,33 @@
+// @ts-ignore: Outside of typescript's rootDir in build
+import * as history from '#history';
+
 import { _scope$ } from './bases/scope.js';
 import { ActiveScope } from './defs/scope.js';
 import { GLOBAL_SCOPE } from './globals.js';
-
-// @ts-ignore: Outside of typescript's rootDir in build
-import { getCurrentScope, setCurrentScope } from '#current-scope';
 
 /**
  * Creates and activate a new token scope
  * @param name
  */
 export function scope$(name: string): ActiveScope {
-  const scope = _scope$(name, getCurrentScope(GLOBAL_SCOPE));
-  setCurrentScope(scope);
-
-  return Object.assign(scope, {
-    // Properties
-    get isActive() {
-      return getCurrentScope(GLOBAL_SCOPE) === scope;
-    },
+  return {
+    ..._scope$(name, history.getCurrentScope(GLOBAL_SCOPE)),
 
     // Methods
+    activate() {
+      history.pushScope(this);
+      return this;
+    },
     deactivate() {
-      setCurrentScope(scope.parent);
+      history.popScope();
     },
     [Symbol.dispose ?? Symbol.for('Symbol.dispose')]() {
-      setCurrentScope(scope.parent);
+      this.deactivate();
     },
-  });
+
+    // Properties
+    get isActive() {
+      return history.getCurrentScope(GLOBAL_SCOPE) === this;
+    },
+  };
 }

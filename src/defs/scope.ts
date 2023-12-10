@@ -22,5 +22,6 @@ export interface ActiveScope extends Disposable, InjectorScope {
   readonly parent: InjectorScope;
 
   // Methods
+  activate(): this;
   deactivate(): void;
 }

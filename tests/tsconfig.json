@@ -4,7 +4,7 @@
     "rootDir": "../",
     "baseUrl": "./",
     "paths": {
-      "#current-scope": ["../dynamic/current-scope.js"],
+      "#history": ["../dynamic/history.js"],
       "@/src/*": ["../src/*"],
     },
     "types": [
