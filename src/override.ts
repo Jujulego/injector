@@ -1,14 +1,25 @@
 import { InjectableType } from './decorators/index.js';
-import { Token } from './defs/index.js';
+import { InjectorScope, Token } from './defs/index.js';
 import { globalScope$ } from './global-scope.js';
 import { getTypeToken } from './utils/token.js';
 
-export function override$<T>(token: Token<T> | InjectableType<T>, value: T): T {
+export interface OverrideOpts {
+  /**
+   * Overrided scope, defaults to global scope.
+   */
+  scope?: InjectorScope;
+}
+
+/**
+ * Overrides value injected from token by given value.
+ */
+export function override$<T>(token: Token<T> | InjectableType<T>, value: T, opts: OverrideOpts = {}): T {
   if (typeof token === 'function') {
     token = getTypeToken(token);
   }
 
-  globalScope$().set(token, value);
+  const scope = opts.scope ?? globalScope$();
+  scope.set(token, value);
 
   return value;
 }
