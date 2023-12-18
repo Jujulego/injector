@@ -12,16 +12,8 @@
   },
   "sideEffects": false,
   "files": [
-    "./dist",
-    "./dynamic"
+    "./dist"
   ],
-  "imports": {
-    "#history": {
-      "types": "./dynamic/history.d.ts",
-      "node": "./dynamic/history.node.js",
-      "default": "./dynamic/history.js"
-    }
-  },
   "type": "module",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -40,7 +32,7 @@
   },
   "dependencies": {
     "@swc/helpers": "^0.5.3",
-    "kyrielle": "^0.8.1"
+    "kyrielle": "^0.8.2"
   },
   "devDependencies": {
     "@jujulego/jill": "2.4.0",
