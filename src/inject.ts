@@ -14,12 +14,12 @@ export interface InjectOpts {
 /**
  * Returns value for given token.
  */
-export function inject$<T>(token: Token<T>, opts?: InjectOpts): Awaitable<T>;
+export function inject$<T>(token: SyncToken<T> | InjectableType<T>, opts?: InjectOpts): T;
 
 /**
  * Returns value for given token.
  */
-export function inject$<T>(token: SyncToken<T> | InjectableType<T>, opts?: InjectOpts): T;
+export function inject$<T>(token: Token<T>, opts?: InjectOpts): Awaitable<T>;
 
 export function inject$<T>(arg: Token<T> | InjectableType<T>, opts: InjectOpts = {}): Awaitable<T> {
   if (typeof arg === 'function') {
