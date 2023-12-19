@@ -1,6 +1,6 @@
 {
   "name": "@jujulego/injector",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "license": "MIT",
   "author": "Julien Capellari <julien.capellari@gmail.com>",
   "repository": {
@@ -12,16 +12,8 @@
   },
   "sideEffects": false,
   "files": [
-    "./dist",
-    "./dynamic"
+    "./dist"
   ],
-  "imports": {
-    "#history": {
-      "types": "./dynamic/history.d.ts",
-      "node": "./dynamic/history.node.js",
-      "default": "./dynamic/history.js"
-    }
-  },
   "type": "module",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -40,7 +32,7 @@
   },
   "dependencies": {
     "@swc/helpers": "^0.5.3",
-    "kyrielle": "^0.8.1"
+    "kyrielle": "^0.8.2"
   },
   "devDependencies": {
     "@jujulego/jill": "2.5.0",
@@ -51,14 +43,14 @@
     "@types/node": "18.19.3",
     "@typescript-eslint/eslint-plugin": "6.15.0",
     "@typescript-eslint/parser": "6.15.0",
-    "@vitest/coverage-v8": "0.34.6",
+    "@vitest/coverage-v8": "1.1.0",
     "eslint": "8.56.0",
     "eslint-plugin-vitest": "0.3.18",
     "shx": "0.3.4",
     "typescript": "5.3.3",
     "vite": "5.0.10",
     "vite-tsconfig-paths": "4.2.2",
-    "vitest": "0.34.6"
+    "vitest": "1.1.0"
   },
   "packageManager": "yarn@4.0.2"
 }

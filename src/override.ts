@@ -1,18 +1,24 @@
-import { Readable } from 'kyrielle';
-
-// @ts-ignore: Outside of typescript's rootDir in build
-import * as history from '#history';
-
 import { InjectableType } from './decorators/index.js';
+import { InjectorScope, Token } from './defs/index.js';
+import { globalScope$ } from './global-scope.js';
 import { getTypeToken } from './utils/token.js';
-import { GLOBAL_SCOPE } from './globals.js';
 
-export function override$<T>(token: Readable<T> | InjectableType<T>, value: T): T {
+export interface OverrideOpts {
+  /**
+   * Overrided scope, defaults to global scope.
+   */
+  scope?: InjectorScope;
+}
+
+/**
+ * Overrides value injected from token by given value.
+ */
+export function override$<T>(token: Token<T> | InjectableType<T>, value: T, opts: OverrideOpts = {}): T {
   if (typeof token === 'function') {
     token = getTypeToken(token);
   }
 
-  const scope = history.getCurrentScope(GLOBAL_SCOPE);
+  const scope = opts.scope ?? globalScope$();
   scope.set(token, value);
 
   return value;

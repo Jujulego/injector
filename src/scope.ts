@@ -1,33 +1,60 @@
-// @ts-ignore: Outside of typescript's rootDir in build
-import * as history from '#history';
-
-import { _scope$ } from './bases/scope.js';
-import { ActiveScope } from './defs/scope.js';
-import { GLOBAL_SCOPE } from './globals.js';
+import { InjectorScope, ScopeRef } from './defs/scope.js';
+import { Token } from './defs/token.js';
+import { globalScope$ } from './global-scope.js';
 
 /**
- * Creates and activate a new token scope
+ * Creates a new injector scope with given parent
+ *
  * @param name
+ * @param parent defaults to global scope
  */
-export function scope$(name: string): ActiveScope {
+export function scope$(name: string, parent?: InjectorScope): InjectorScope & { readonly parent: InjectorScope };
+
+/**
+ * Creates a new injector scope with no parent
+ *
+ * @param name
+ * @param parent
+ */
+export function scope$(name: string, parent: null): InjectorScope;
+
+export function scope$(name: string, parent?: InjectorScope | null): InjectorScope {
+  const elements = new Map<symbol, unknown>();
+
   return {
-    ..._scope$(name, history.getCurrentScope(GLOBAL_SCOPE)),
+    // Properties
+    get name() {
+      return name;
+    },
+    get parent() {
+      return parent === undefined ? globalScope$() : parent;
+    },
 
     // Methods
-    activate() {
-      history.pushScope(this);
-      return this;
-    },
-    deactivate() {
-      history.popScope();
-    },
-    [Symbol.dispose ?? Symbol.for('Symbol.dispose')]() {
-      this.deactivate();
+    ref<T>(token: Token<T>): ScopeRef<T> {
+      return {
+        read: () => this.get(token),
+        mutate: (obj: T) => {
+          this.set(token, obj);
+          return obj;
+        }
+      };
     },
 
-    // Properties
-    get isActive() {
-      return history.getCurrentScope(GLOBAL_SCOPE) === this;
+    get<T>(token: Token<T>): T | undefined {
+      if (elements.has(token.id)) {
+        return elements.get(token.id) as T;
+      }
+
+      if (this.parent) {
+        return this.parent.get<T>(token);
+      }
     },
+    set<T>(token: Token<T>, obj: T): void {
+      elements.set(token.id, obj);
+    },
+    reset(): void {
+      elements.clear();
+    }
   };
 }

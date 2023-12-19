@@ -1,10 +1,9 @@
-import { SyncReadable } from 'kyrielle';
-
-import { inject$ } from '../inject.js';
+import { SyncToken } from '../defs/index.js';
+import { inject$, InjectOpts } from '../inject.js';
 import { InjectableType } from './injectable.js';
 
 // Types
-export interface InjectOpts {
+export interface InjectDecoratorOpts extends InjectOpts {
   lazy?: boolean;
 }
 
@@ -30,7 +29,7 @@ export type InjectDecorator<I> = InjectFieldDecorator<I> | InjectAccessorDecorat
  * @param type Service to inject
  * @param opts
  */
-export function Inject<T>(type: InjectableType<T> | SyncReadable<T>, opts?: { lazy?: false }): InjectFieldDecorator<T>;
+export function Inject<T>(type: SyncToken<T> | InjectableType<T>, opts?: { lazy?: false } & InjectOpts): InjectFieldDecorator<T>;
 
 /**
  * Lazily inject service instance into the decorated accessor, using `inject$`.
@@ -47,9 +46,9 @@ export function Inject<T>(type: InjectableType<T> | SyncReadable<T>, opts?: { la
  * @param type Service to inject
  * @param opts
  */
-export function Inject<T>(type: InjectableType<T> | SyncReadable<T>, opts: { lazy: true }): InjectAccessorDecorator<T>;
+export function Inject<T>(type: SyncToken<T> | InjectableType<T>, opts: { lazy: true } & InjectOpts): InjectAccessorDecorator<T>;
 
-export function Inject<T>(type: InjectableType<T> | SyncReadable<T>, opts: InjectOpts = {}): InjectDecorator<T> {
+export function Inject<T>(type: SyncToken<T> | InjectableType<T>, opts: InjectDecoratorOpts = {}): InjectDecorator<T> {
   return <InjectDecorator<T>>((target: undefined | ClassAccessorDecoratorTarget<unknown, T>, ctx: ClassFieldDecoratorContext<unknown, T> | ClassAccessorDecoratorContext<unknown, T>) => {
     if (ctx.kind === 'accessor' && opts.lazy) {
       return {
@@ -57,7 +56,7 @@ export function Inject<T>(type: InjectableType<T> | SyncReadable<T>, opts: Injec
           let instance = target!.get.call(this);
 
           if (instance === undefined) {
-            instance = inject$<T>(type);
+            instance = inject$<T>(type, opts);
             target!.set.call(this, instance);
           }
 

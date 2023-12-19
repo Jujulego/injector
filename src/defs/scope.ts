@@ -11,17 +11,9 @@ export interface InjectorScope {
   readonly parent: InjectorScope | null;
 
   // Methods
+  ref<T>(token: Token<T>): ScopeRef<T>;
+
   get<T>(token: Token<T>): T | undefined;
   set<T>(token: Token<T>, obj: T): void;
-  ref<T>(token: Token<T>): ScopeRef<T>;
-}
-
-export interface ActiveScope extends Disposable, InjectorScope {
-  // Attributes
-  readonly isActive: boolean;
-  readonly parent: InjectorScope;
-
-  // Methods
-  activate(): this;
-  deactivate(): void;
+  reset(): void;
 }

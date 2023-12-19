@@ -4,11 +4,7 @@
     "rootDir": "../",
     "baseUrl": "./",
     "paths": {
-      "#history": ["../dynamic/history.js"],
       "@/src/*": ["../src/*"],
-    },
-    "types": [
-      "vitest/globals"
-    ]
+    }
   }
 }
