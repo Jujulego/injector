@@ -1,4 +1,4 @@
-import { Awaitable, awaitedCall, cachedAwaiter } from 'kyrielle';
+import { Awaitable, awaitedCall, dedupedAwaiter } from 'kyrielle';
 
 import { SyncToken, Token } from './defs/index.js';
 import { globalScope$ } from './global-scope.js';
@@ -15,7 +15,7 @@ export function token$<const T>(fn: () => T): SyncToken<T>;
 
 export function token$<const T>(fn: () => Awaitable<T>):  Token<T> {
   const id = Symbol();
-  const awaiter = cachedAwaiter();
+  const awaiter = dedupedAwaiter();
 
   return {
     get id() {
