@@ -3110,15 +3110,15 @@ __metadata:
   linkType: hard
 
 "kyrielle@npm:^0.9.0":
-  version: 0.9.0
-  resolution: "kyrielle@npm:0.9.0"
+  version: 0.9.3
+  resolution: "kyrielle@npm:0.9.3"
   dependencies:
     "@swc/helpers": "npm:^0.5.3"
     immer: "npm:^10.0.3"
   dependenciesMeta:
-    vitest@1.1.1:
+    vitest@1.1.3:
       unplugged: true
-  checksum: 16c8579b293cac4ea51cbcb3ae7bcdc04c966abcffb07cb0bade2d51649ba387dc94b7512343dc62a0793789ca1e3970558d116fc9efc8e1ad40da1628619d40
+  checksum: b247a03da1c6060d463e259cf41783bbb8b6dcf816be11e10dc613b138bae340f870aaaf4b5eaea09f9b422a2a1deffc1464118088456461719192dc0e6a0c62
   languageName: node
   linkType: hard
 
