@@ -431,7 +431,7 @@ __metadata:
     shx: "npm:0.3.4"
     typescript: "npm:5.3.3"
     vite: "npm:5.0.11"
-    vite-tsconfig-paths: "npm:4.3.0"
+    vite-tsconfig-paths: "npm:4.3.1"
     vitest: "npm:1.2.0"
   languageName: unknown
   linkType: soft
@@ -4883,9 +4883,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-tsconfig-paths@npm:4.3.0":
-  version: 4.3.0
-  resolution: "vite-tsconfig-paths@npm:4.3.0"
+"vite-tsconfig-paths@npm:4.3.1":
+  version: 4.3.1
+  resolution: "vite-tsconfig-paths@npm:4.3.1"
   dependencies:
     debug: "npm:^4.1.1"
     globrex: "npm:^0.1.2"
@@ -4895,7 +4895,7 @@ __metadata:
   peerDependenciesMeta:
     vite:
       optional: true
-  checksum: a7eaf87c56d031738bdf5a425b0a9501bf392601edc3fdc39fe1e5f76288008c4a033cabaa6ea7e9264f7faa2ef5a17da72200a81a758c5c8f7fa34100fd36ea
+  checksum: 1432f80750f5cbe181c265eb9fc2e9fff8b25a2858f176dc0a02311e3e826333526ee9c16bb0aaaa8555a417ea944d68a2e8225181215cd9502370f913eb3f79
   languageName: node
   linkType: hard
 
