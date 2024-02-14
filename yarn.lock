@@ -415,7 +415,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@jujulego/injector@workspace:."
   dependencies:
-    "@jujulego/jill": "npm:2.5.0"
+    "@jujulego/jill": "npm:2.5.1"
     "@jujulego/vite-plugin-swc": "npm:1.1.1"
     "@microsoft/eslint-formatter-sarif": "npm:3.0.0"
     "@swc/cli": "npm:0.3.9"
@@ -436,16 +436,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@jujulego/jill@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@jujulego/jill@npm:2.5.0"
+"@jujulego/jill@npm:2.5.1":
+  version: 2.5.1
+  resolution: "@jujulego/jill@npm:2.5.1"
   dependencies:
     "@jujulego/aegis": "npm:^2.1.0"
     "@jujulego/event-tree": "npm:^4.3.0"
     "@jujulego/logger": "npm:^0.2.4"
     "@jujulego/quick-tag": "npm:^0.3.3"
     "@jujulego/tasks": "npm:^2.2.0"
-    "@jujulego/utils": "npm:^2.0.2"
+    "@jujulego/utils": "npm:^3.0.0"
     "@swc/helpers": "npm:^0.5.3"
     ajv: "npm:^8.12.0"
     chalk: "npm:^5.3.0"
@@ -460,7 +460,7 @@ __metadata:
     moo: "npm:^0.5.2"
     normalize-package-data: "npm:^6.0.0"
     path-scurry: "npm:^1.10.1"
-    pretty-ms: "npm:^8.0.0"
+    pretty-ms: "npm:^9.0.0"
     react: "npm:^18.2.0"
     reflect-metadata: "npm:^0.2.0"
     semver: "npm:^7.5.4"
@@ -468,7 +468,7 @@ __metadata:
     yargs: "npm:^17.7.2"
   bin:
     jill: ./bin/jill.js
-  checksum: 8f9fce6876583416d9a7bd99296f462e57e2aba853f8daf65f1ae0eb8d36dedf5614967c40f28e33302331c5d5f4ee7449c2198b46d88960580bbcfc120c13c3
+  checksum: 72a1051503369e0954135173c5e94c459cb0631134d47e27d41df24ca59d9ddc0534468fcb0c979a19ad9fe69fdb62b6e42e6083a7d3d214f00d367a8d5d03d3
   languageName: node
   linkType: hard
 
@@ -506,12 +506,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jujulego/utils@npm:^2.0.0, @jujulego/utils@npm:^2.0.2":
+"@jujulego/utils@npm:^2.0.0":
   version: 2.1.1
   resolution: "@jujulego/utils@npm:2.1.1"
   dependencies:
     "@jujulego/event-tree": "npm:^4.1.0"
   checksum: 16ad5be2ac5708b2922e9a07a5b1b450c9848f02e29d8af7c4805de1b2879766ac8e1c20036c1c3043eee3e4768907b8330e8b08df6a974df4a37854af5f7bb2
+  languageName: node
+  linkType: hard
+
+"@jujulego/utils@npm:^3.0.0":
+  version: 3.0.4
+  resolution: "@jujulego/utils@npm:3.0.4"
+  dependencies:
+    "@swc/helpers": "npm:^0.5.3"
+    kyrielle: "npm:^0.6.0"
+  checksum: 259e8c2979e48ec3c4c24cba9f33ba99a3f2ae0e0c65e017c93b5721dca598cb56d467b856fdf05060a03010797cf8cc325251c8ebfbe8b8c593c588eee2a523
   languageName: node
   linkType: hard
 
@@ -3112,6 +3122,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"kyrielle@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "kyrielle@npm:0.6.0"
+  dependencies:
+    immer: "npm:^10.0.3"
+  dependenciesMeta:
+    vitest@0.34.6:
+      unplugged: true
+  checksum: 7045240dbb778d939cd40267fddad5354a509789f8b7424dcbba3a096fb01141ebbefdfd0fec0a832857449a1e88b76f57889193e29642d0bbf2893ca43fd15c
+  languageName: node
+  linkType: hard
+
 "kyrielle@npm:^0.9.0":
   version: 0.9.3
   resolution: "kyrielle@npm:0.9.3"
@@ -3772,10 +3794,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parse-ms@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "parse-ms@npm:3.0.0"
-  checksum: fc602bba093835562321a67a9d6c8c9687ca4f26a09459a77e07ebd7efddd1a5766725ec60eb0c83a2abe67f7a23808f7deb1c1226727776eaf7f9607ae09db2
+"parse-ms@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "parse-ms@npm:4.0.0"
+  checksum: 673c801d9f957ff79962d71ed5a24850163f4181a90dd30c4e3666b3a804f53b77f1f0556792e8b2adbb5d58757907d1aa51d7d7dc75997c2a56d72937cbc8b7
   languageName: node
   linkType: hard
 
@@ -3939,12 +3961,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-ms@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "pretty-ms@npm:8.0.0"
+"pretty-ms@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "pretty-ms@npm:9.0.0"
   dependencies:
-    parse-ms: "npm:^3.0.0"
-  checksum: 07c78d9522d7d3a8fa54fbb417d21c451b82de0fe3591de7d3a715160507067da77c421cbe601d9a65bfc10f52883057eb2922e2698913647d444fb35e9db6ed
+    parse-ms: "npm:^4.0.0"
+  checksum: b11e1eda41a2efcc16aab218392c8e457a8ae5c8edf63aafba0477123426b1268136b9b532cbfd84625bcb826739120ec8490286dab66102b9f09e717bdb4e45
   languageName: node
   linkType: hard
 
