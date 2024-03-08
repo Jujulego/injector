@@ -426,7 +426,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:6.21.0"
     "@vitest/coverage-v8": "npm:1.3.1"
     eslint: "npm:8.57.0"
-    eslint-plugin-vitest: "npm:0.3.23"
+    eslint-plugin-vitest: "npm:0.3.24"
     kyrielle: "npm:^0.9.0"
     shx: "npm:0.3.4"
     typescript: "npm:5.3.3"
@@ -2078,9 +2078,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-vitest@npm:0.3.23":
-  version: 0.3.23
-  resolution: "eslint-plugin-vitest@npm:0.3.23"
+"eslint-plugin-vitest@npm:0.3.24":
+  version: 0.3.24
+  resolution: "eslint-plugin-vitest@npm:0.3.24"
   dependencies:
     "@typescript-eslint/utils": "npm:^7.1.1"
   peerDependencies:
@@ -2091,7 +2091,7 @@ __metadata:
       optional: true
     vitest:
       optional: true
-  checksum: 31305735bb2cf86cef9138e62cec534f2237498f923ee9acbde6f511d7179e6c7dac9f1c5eea22c81d3e27739f8d659db2400e84e9495c486b9b94f3aa3729a0
+  checksum: 7183aa97f1df00198da42d9949cc6886dc43a01426ff55235466e766ce269faa5bcc384a4abe05b64e3fee86f882ced045aac8b6f774991bb425cba33efd9271
   languageName: node
   linkType: hard
 
