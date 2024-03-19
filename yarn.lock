@@ -421,7 +421,7 @@ __metadata:
     "@swc/cli": "npm:0.3.10"
     "@swc/core": "npm:1.4.8"
     "@swc/helpers": "npm:^0.5.3"
-    "@types/node": "npm:18.19.25"
+    "@types/node": "npm:18.19.26"
     "@typescript-eslint/eslint-plugin": "npm:6.21.0"
     "@typescript-eslint/parser": "npm:6.21.0"
     "@vitest/coverage-v8": "npm:1.4.0"
@@ -952,12 +952,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.19.25":
-  version: 18.19.25
-  resolution: "@types/node@npm:18.19.25"
+"@types/node@npm:18.19.26":
+  version: 18.19.26
+  resolution: "@types/node@npm:18.19.26"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: ee465314abb02e261ee6a1b237a00a18d5ce439cd42024c90b2d532e2594f8b1b7fbae42649e7e2d182f7c49bdfe894d14e5643373848a086e7a6c3e37576f81
+  checksum: d44a8313875c1c25cf09398d2b31bb7c57fc575d83ab4e9e401081ace35d9f052d47cd610139472c2da80e2bfb281a292490e4a5070b1427726b25ac01219868
   languageName: node
   linkType: hard
 
